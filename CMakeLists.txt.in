@@ -1,0 +1,37 @@
+cmake_minimum_required(VERSION 2.8)
+project(app)
+
+set(app_VERSION {{version}})
+set(CMAKE_C_FLAGS "-Wall")
+
+configure_file(
+    "${PROJECT_SOURCE_DIR}/include/config.h.in"
+    "${PROJECT_SOURCE_DIR}/include/config.h"
+)
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../app)
+
+if(WIN32)
+    include_directories(
+        "${PROJECT_SOURCE_DIR}/include"
+        "${PROJECT_SOURCE_DIR}/lcpkg/installed/x64-windows/include"
+    )
+else()
+    include_directories(
+        "${PROJECT_SOURCE_DIR}/include"
+        "${PROJECT_SOURCE_DIR}/lcpkg/installed/x64-linux/include"
+    )
+endif(WIN32)
+
+aux_source_directory(src DIR_SRC)
+add_subdirectory(src)
+add_executable(app ${DIR_SRC})
+
+if(WIN32)
+    link_directories("${PROJECT_SOURCE_DIR}/lcpkg/installed/x64-windows/lib")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
+    target_link_libraries(app LCUI LCUIMain AppLib AppUI)
+else()
+    link_directories("${PROJECT_SOURCE_DIR}/lcpkg/installed/x64-linux/lib")
+    target_link_libraries(app LCUI AppLib AppUI)
+endif(WIN32)

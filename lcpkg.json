@@ -1,0 +1,22 @@
+{
+  "name": "lcui-quick-start",
+  "version": "0.1.0",
+  "description": "A minimal LCUI application",
+  "author": "lc-soft",
+  "arch": [
+    "x86",
+    "x64"
+  ],
+  "platform": [
+    "windows",
+    "uwp",
+    "linux"
+  ],
+  "mode": [
+    "debug",
+    "release"
+  ],
+  "scripts": {
+    "start": "node ./scripts/start.js"
+  }
+}

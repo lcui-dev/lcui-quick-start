@@ -1,0 +1,4 @@
+#define APP_NAME "{{name}}"
+#define APP_VERSION "{{version}}"
+#define APP_BUILD_TIME "{{build_time}}"
+#define APP_DESCRIPTION "{{description}}"

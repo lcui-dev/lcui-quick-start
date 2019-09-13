@@ -1,0 +1,11 @@
+build
+.xmake
+.vscode
+lcpkg
+node_modules
+include/config.h
+include/version.h
+app/app
+app/assets/fonts
+app/assets/stylesheets
+CMakeLists.txt
