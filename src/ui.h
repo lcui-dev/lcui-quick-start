@@ -1,5 +1,5 @@
 #include "ui/components.h"
 #include "ui/views.h"
 
-extern void UI_Init();
-extern int UI_Run();
+extern int UI_Init(void);
+extern int UI_Run(void);

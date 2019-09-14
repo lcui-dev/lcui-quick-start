@@ -6,6 +6,7 @@ node_modules
 include/config.h
 include/version.h
 app/app
+app/store.data
 app/assets/fonts
 app/assets/stylesheets
 Release

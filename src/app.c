@@ -1,10 +1,9 @@
-#include <stdio.h>
 #include "ui.h"
 
 int main(void)
 {
-	printf("hello, world!\n");
-
-	UI_Init();
-	return UI_Run();
+	if (UI_Init() == 0) {
+		return UI_Run();
+	}
+	return -1;
 }

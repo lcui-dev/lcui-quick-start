@@ -9,7 +9,7 @@
 
 void store_init(struct store *s)
 {
-	s->name[0] = 0;
+	s->message[0] = 0;
 	strcpy(s->head, STORE_HEAD_STR);
 	strcpy(s->version, APP_VERSION);
 }
@@ -27,7 +27,7 @@ int store_load(struct store *s)
 		return -1;
 	}
 	fclose(fp);
-	if (strcmp(s->name, STORE_HEAD_STR) != 0 ||
+	if (strcmp(s->head, STORE_HEAD_STR) != 0 ||
 	    strcmp(s->version, APP_VERSION) != 0) {
 		return -1;
 	}
@@ -37,7 +37,7 @@ int store_load(struct store *s)
 int store_save(struct store *s)
 {
 	FILE *fp;
-	
+
 	fp = fopen(STORE_FILE, "wb+");
 	if (!fp) {
 		return errno;

@@ -1,7 +1,7 @@
 struct store {
     char head[32];
     char version[32];
-    char name[256];
+    char message[256];
 };
 
 extern void store_init(struct store *s);
