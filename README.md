@@ -1,5 +1,7 @@
 # lcui-quick-start
 
+(**English**/[中文](README.zh-cn.md))
+
 **Clone and run for a quick way to see LCUI in action.**
 
 ## To Use

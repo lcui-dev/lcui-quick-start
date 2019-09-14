@@ -1,5 +1,7 @@
 # lcui-quick-start
 
+([English](README.md)/**中文**)
+
 **克隆并运行以快速查看LCUI的运行方式。**
 
 ## 使用
