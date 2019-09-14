@@ -1,15 +1,40 @@
-const fs = require('fs');
+const os = require('os');
 const path = require('path');
+const fs = require('fs-extra');
+const program = require('commander');
 const { execSync, spawnSync } = require('child_process');
 
 const logger = require('./logger');
+const msbuild = require('./msbuild');
 const pkg = require('../lcpkg.json');
 
-const TARGET_NAME = 'app'
-const ROOT_DIR =  path.resolve(__dirname, '..')
-const BUILD_DIR = path.join(ROOT_DIR, 'build')
-const TARGET_DIR = path.join(ROOT_DIR, 'app')
-const TARGET_PATH = path.join(TARGET_DIR, TARGET_NAME)
+const TARGET_NAME = 'app';
+const TARGET_EXT = process.platform === 'win32' ? '.exe' :'';
+const TARGET_FILE_NAME = `${TARGET_NAME}${TARGET_EXT}`;
+const ROOT_DIR =  path.resolve(__dirname, '..');
+const BUILD_DIR = path.join(ROOT_DIR, 'build');
+const TARGET_DIR = path.join(ROOT_DIR, 'app');
+const TARGET_PATH = path.join(TARGET_DIR, TARGET_FILE_NAME);
+const LCPKG_DIR = path.join(ROOT_DIR, 'lcpkg', 'installed');
+
+function flatObjectProperties(obj) {
+  const props = {};
+
+  function flat(o, prefix) {
+    Object.keys(o).forEach((k) => {
+      const key = prefix ? `${prefix}.${k}` : k;
+
+      if (typeof o[k] === 'object') {
+        flat(o[k], key);
+      } else {
+        props[key] = o[k];
+      }
+    })
+  }
+
+  flat(obj);
+  return props;
+}
 
 class XMake {
   constructor() {
@@ -17,109 +42,196 @@ class XMake {
   }
 
   configure() {
-    const result = spawnSync('xmake', ['config'], { stdio: 'inherit', cwd: ROOT_DIR })
-
-    return result.status
+    return spawnSync('xmake', ['config'], { stdio: 'inherit', cwd: ROOT_DIR })
   }
 
   build() {
-    const result = spawnSync('xmake', ['build'], { stdio: 'inherit', cwd: ROOT_DIR })
-
-    return result.status
+    return spawnSync('xmake', ['build'], { stdio: 'inherit', cwd: ROOT_DIR })
   }
 
   run() {
-    const result = spawnSync('xmake', ['run'], { stdio: 'inherit', cwd: ROOT_DIR })
-
-    return result.status
+    return spawnSync('xmake', ['run'], { stdio: 'inherit', cwd: ROOT_DIR })
   }
 }
 
 class CMake {
-  constructor() {
+  constructor(builder) {
     this.name = 'CMake'
+    this.builder = builder
   }
 
   configure() {
-    const result = spawnSync('cmake', ['../'], { stdio: 'inherit', cwd: BUILD_DIR })
-
-    return result.status
+    return spawnSync(
+      'cmake',
+      ['../', '-DCMAKE_GENERATOR_PLATFORM=x64', '-T', 'v141_xp'],
+      { stdio: 'inherit', cwd: BUILD_DIR }
+    )
   }
 
   build() {
-    const result = spawnSync('make', { stdio: 'inherit', cwd: BUILD_DIR })
-
-    return result.status
+    if (this.builder.platform === 'windows') {
+      if (!msbuild.exists()) {
+        logger.error('Visual Studio not found, build stopped.')
+        return null
+      }
+      if (this.builder.mode === 'debug') {
+        return msbuild.exec('..\\scripts\\build-bin-x64-dbg', { cwd: BUILD_DIR })
+      }
+      return msbuild.exec('..\\scripts\\build-bin-x64-rel', { cwd: BUILD_DIR })
+    }
+    return spawnSync('make', { stdio: 'inherit', cwd: BUILD_DIR })
   }
 
   run() {
-    const result = spawnSync(TARGET_PATH, { stdio: 'inherit', cwd: TARGET_DIR })
-
-    return result.status
+    return spawnSync(TARGET_PATH, { stdio: 'inherit', cwd: TARGET_DIR })
   }
 }
 
-async function detectBuildTool() {
-  const tools = ['cmake', 'xmake'];
 
-  for (let tool of tools) {
-    try {
-      const stdout = execSync(`${tool} --version`, { encoding: 'utf-8' });
+class Builder {
+  constructor({
+    mode = 'release',
+    arch = 'x64',
+    cssInput = '',
+    cssOutput = '',
+    configureFiles = []
+  } = {}) {
+    this.mode = mode;
+    this.arch = arch;
+    this.platform = process.platform == 'win32' ? 'windows' : process.platform;
+    this.cssInput = cssInput;
+    this.cssOutput = cssOutput;
+    this.configureFiles = configureFiles;
+    this.devdir = path.join(LCPKG_DIR, `${this.arch}-${this.platform}`);
+    if (this.mode === 'debug') {
+      this.devdir = path.join(this.devdir, 'debug');
+    }
+    this.libdir = path.join(this.devdir, 'lib');
+    this.bindir = path.join(this.devdir, 'bin');
+    this.tool = this.detectBuildTool();
+  }
 
-      if (stdout) {
-        if (tool === 'cmake') {
-          return new CMake();
+  detectBuildTool() {
+    const tools = ['cmake', 'xmake'];
+
+    for (let tool of tools) {
+      try {
+        const stdout = execSync(`${tool} --version`, { encoding: 'utf-8' });
+
+        if (stdout) {
+          if (tool === 'cmake') {
+            return new CMake(this);
+          }
+          if (tool === 'xmake') {
+            return new XMake(this);
+          }
         }
-        if (tool === 'xmake') {
-          return new XMake();
-        }
+      } catch (err) {
+        continue;
       }
-    } catch (err) {
-      continue;
+    }
+    return null;
+  }
+
+  beforeBuild() {
+    const info = flatObjectProperties({
+      ...pkg,
+      os: {
+        type: os.type(),
+        arch: os.arch(),
+        release: os.release()
+      },
+      build_time: new Date().toISOString()
+    });
+    const keys = Object.keys(info);
+    const regs = keys.map(k => new RegExp(`{{${k}}}`, 'g'));
+
+    if (!fs.existsSync(BUILD_DIR)) {
+      fs.mkdirSync(BUILD_DIR);
+    }
+    this.configureFiles.forEach((f) => {
+      let content = fs.readFileSync(`${f}.in`, { encoding: 'utf-8' });
+      regs.forEach((reg, i) => {
+        content = content.replace(reg, info[keys[i]]);
+      });
+      fs.writeFileSync(f, content);
+    });
+  }
+
+  afterBuild() {
+    logger.log(`copy dependency files into app directory...`);
+    fs.copySync(this.bindir, TARGET_DIR);
+    if (this.platform == 'windows') {
+      fs.copySync(path.join(TARGET_DIR, this.mode, TARGET_FILE_NAME), TARGET_PATH);
     }
   }
-  return null;
+
+  buildCSS() {
+    logger.log('build stylesheets...');
+    execSync(
+      `npx node-sass --output ${this.cssOutput} --output-style expanded ${this.cssInput}`,
+      { stdio: 'inherit', cwd: ROOT_DIR }
+    );
+  }
+
+  run() {
+    const tool = this.tool;
+
+    if (!tool) {
+      logger.error('the build tool was not found! currently supports cmake and xmake, please install one of them.');
+      return;
+    }
+    this.beforeBuild();
+    this.buildCSS();
+    logger.log(`build tool is ${tool.name}`);
+    tool.configure();
+    if (tool.build().status !== 0) {
+      logger.error('build failed.');
+      return null;
+    }
+    this.afterBuild();
+    logger.log('build completed.');
+    logger.log('run application...');
+    const result = tool.run();
+    if (result.status !== 0) {
+      logger.error('the application is not working properly.');
+      return null;
+    }
+    return logger.log('the application has exited.');
+  }
 }
 
-function bootstrap() {
-  const files = ['include/version.h', 'CMakeLists.txt'];
-  const info = { ...pkg, build_time: new Date().toISOString() };
-  const keys = Object.keys(info);
-  const regs = keys.map(k => new RegExp(`{{${k}}}`, 'g'));
-
-  if (!fs.existsSync(BUILD_DIR)) {
-    fs.mkdirSync(BUILD_DIR);
-  }
-  files.forEach((f) => {
-    let content = fs.readFileSync(`${f}.in`, { encoding: 'utf-8' });
-    regs.forEach((reg, i) => {
-      content = content.replace(reg, info[keys[i]]);
-    });
-    fs.writeFileSync(f, content);
+function start(options) {
+  const builder = new Builder({
+    configureFiles: ['include/version.h', 'CMakeLists.txt'],
+    cssInput: 'src/ui/stylesheets/app.scss',
+    cssOutput: 'app/assets/stylesheets',
+    ...options
   });
+
+  builder.run();
 }
 
-function buildCSS() {
-  logger.log('build stylesheets...');
-  execSync(
-    'npx node-sass --output app/assets/stylesheets --output-style expanded src/ui/stylesheets/app.scss',
-    { stdio: 'inherit', cwd: ROOT_DIR }
-  );
-}
-
-async function start() {
-  const tool = await detectBuildTool();
-
-  if (!tool) {
-    logger.error('the build tool was not found! currently supports cmake and xmake, please install one of them.');
-    return;
-  }
-  bootstrap();
-  buildCSS();
-  logger.log(`build tool is ${tool.name}`);
-  tool.configure();
-  tool.build();
-  tool.run();
-}
-
-start();
+program
+  .usage('[options]')
+  .option('--mode <mode>', 'specify build mode', (mode, defaultMode) => {
+    if (!['debug', 'release'].includes(mode)) {
+      logger.error(`invalid mode: ${mode}`);
+      return defaultMode;
+    }
+    return mode;
+  }, 'release')
+  .option('--arch <arch>', 'specify CPU architecture', (arch, defaultArch) => {
+    if (!['x86', 'x64', 'arm'].includes(arch)) {
+      logger.error(`invalid arch: ${arch}`);
+      return defaultArch;
+    }
+    return arch;
+  }, 'x64')
+  .action(() => {
+    start({
+      mode: program.mode,
+      arch: program.arch
+    })
+  })
+  .parse(process.argv)

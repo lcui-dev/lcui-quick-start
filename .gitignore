@@ -8,4 +8,9 @@ include/version.h
 app/app
 app/assets/fonts
 app/assets/stylesheets
+Release
+Debug
 CMakeLists.txt
+*.pdb
+*.exe
+*.dll
