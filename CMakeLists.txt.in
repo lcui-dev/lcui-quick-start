@@ -31,14 +31,23 @@ add_executable(app ${DIR_SRC})
 if(WIN32)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
     target_link_libraries(
-        app AppLib AppUI
+        app
+        AppUI
+        AppUIViews
+        AppUIComponents
+        AppLib
+        optimized LCUI
+        optimized LCUIMain
         debug "${LCPKG_DIR}/debug/lib/LCUI.lib"
         debug "${LCPKG_DIR}/debug/lib/LCUIMain.lib"
-        optimized LCUI LCUIMain
     )
 else()
     target_link_libraries(
-        app AppLib AppUI
+        app
+        AppUI
+        AppUIViews
+        AppUIComponents
+        AppLib
         debug "${LCPKG_DIR}/debug/lib/LCUI"
         optimized LCUI
     )

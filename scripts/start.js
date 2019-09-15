@@ -61,11 +61,12 @@ class CMake {
   }
 
   configure() {
-    return spawnSync(
-      'cmake',
-      ['../', '-DCMAKE_GENERATOR_PLATFORM=x64', '-T', 'v141_xp'],
-      { stdio: 'inherit', cwd: BUILD_DIR }
-    )
+    const params = ['../']
+
+    if (this.builder.platform === 'windows') {
+      params.push('-DCMAKE_GENERATOR_PLATFORM=x64', '-T', 'v141_xp')
+    }
+    return spawnSync('cmake', params, { stdio: 'inherit', cwd: BUILD_DIR })
   }
 
   build() {
@@ -86,7 +87,6 @@ class CMake {
     return spawnSync(TARGET_PATH, { stdio: 'inherit', cwd: TARGET_DIR })
   }
 }
-
 
 class Builder {
   constructor({
@@ -159,6 +159,9 @@ class Builder {
   }
 
   afterBuild() {
+    if (!fs.existsSync(this.bindir)) {
+      return;
+    }
     logger.log(`copy dependency files into app directory...`);
     fs.copySync(this.bindir, TARGET_DIR);
     if (this.platform == 'windows') {
