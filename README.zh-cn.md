@@ -22,12 +22,16 @@
 ```bash
 # 克隆这个仓库
 git clone https://github.com/lc-ui/lcui-quick-start
+
 # 进入仓库
 cd lcui-quick-start
+
 # 安装 NodeJS 依赖包
 npm install
+
 # 安装适用于 x64 CPU 架构的 C/C++ 依赖库
 lcpkg install --arch x64
+
 # 以调试模式运行应用程序
 lcpkg run start --mode debug
 ```
