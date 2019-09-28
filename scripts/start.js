@@ -7,6 +7,7 @@ const { execSync, spawnSync } = require('child_process');
 const logger = require('./logger');
 const msbuild = require('./msbuild');
 const pkg = require('../lcpkg.json');
+const { format } = require('./utils');
 
 const TARGET_NAME = 'app';
 const TARGET_EXT = process.platform === 'win32' ? '.exe' :'';
@@ -16,25 +17,6 @@ const BUILD_DIR = path.join(ROOT_DIR, 'build');
 const TARGET_DIR = path.join(ROOT_DIR, 'app');
 const TARGET_PATH = path.join(TARGET_DIR, TARGET_FILE_NAME);
 const LCPKG_DIR = path.join(ROOT_DIR, 'lcpkg', 'installed');
-
-function flatObjectProperties(obj) {
-  const props = {};
-
-  function flat(o, prefix) {
-    Object.keys(o).forEach((k) => {
-      const key = prefix ? `${prefix}.${k}` : k;
-
-      if (typeof o[k] === 'object') {
-        flat(o[k], key);
-      } else {
-        props[key] = o[k];
-      }
-    })
-  }
-
-  flat(obj);
-  return props;
-}
 
 class XMake {
   constructor() {
@@ -134,7 +116,7 @@ class Builder {
   }
 
   beforeBuild() {
-    const info = flatObjectProperties({
+    const info = {
       ...pkg,
       os: {
         type: os.type(),
@@ -142,19 +124,14 @@ class Builder {
         release: os.release()
       },
       build_time: new Date().toISOString()
-    });
-    const keys = Object.keys(info);
-    const regs = keys.map(k => new RegExp(`{{${k}}}`, 'g'));
+    };
 
     if (!fs.existsSync(BUILD_DIR)) {
       fs.mkdirSync(BUILD_DIR);
     }
     this.configureFiles.forEach((f) => {
-      let content = fs.readFileSync(`${f}.in`, { encoding: 'utf-8' });
-      regs.forEach((reg, i) => {
-        content = content.replace(reg, info[keys[i]]);
-      });
-      fs.writeFileSync(f, content);
+      const content = fs.readFileSync(`${f}.in`, { encoding: 'utf-8' });
+      fs.writeFileSync(f, format(content, info));
     });
   }
 
