@@ -11,6 +11,7 @@ int UI_Init(void)
 
     LCUI_Init();
     UI_InitComponents();
+    UI_InitViews();
     wrapper = LCUIBuilder_LoadFile("assets/views/app.xml");
     if (!wrapper) {
         return -1;
@@ -19,7 +20,6 @@ int UI_Init(void)
     Widget_SetTitleW(root, APP_NAME);
     Widget_Append(root, wrapper);
     Widget_Unwrap(wrapper);
-    UI_InitViews();
     return 0;
 }
 
