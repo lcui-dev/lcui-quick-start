@@ -11,7 +11,7 @@ To clone and run this repository you'll need install the following tools on your
 - [Git](https://git-scm.com)
 - [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com))
 - [LCPkg](https://github.com/lc-soft/lcpkg):
-    ```shell
+    ```bash
     npm install -g lcpkg
     lcpkg setup
     ```
@@ -19,7 +19,7 @@ To clone and run this repository you'll need install the following tools on your
 
 From your command line:
 
-```shell
+```bash
 # Clone this repository
 git clone https://github.com/lc-ui/lcui-quick-start
 
