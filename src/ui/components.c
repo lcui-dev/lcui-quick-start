@@ -3,5 +3,5 @@
 
 void UI_InitComponents(void)
 {
-	UI_InitAboutComponent();
+	UI_InitAbout();
 }
