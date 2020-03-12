@@ -1,5 +1,8 @@
 # lcui-quick-start
 
+<a class="https://github.com/lc-ui/lcui-quick-start/actions"><img src="https://github.com/lc-ui/lcui-quick-start/workflows/C%2FC%2B%2B%20CI/badge.svg" alt="GitHub Actions"></a>
+<a class="https://travis-ci.org/lc-ui/lcui-quick-start"><img src="https://travis-ci.org/lc-ui/lcui-quick-start.svg?branch=master" alt="Build Status"></a>
+
 (**English**/[中文](README.zh-cn.md))
 
 **Clone and run for a quick way to see LCUI in action.**
