@@ -19,11 +19,11 @@ jobs:
       run: npm run build:css
     - name: xmake
       run: |
-        npm run configure --tool xmake
+        npm run configure -- --tool xmake
         xmake
     - name: cmake
       run: |
-        npm run configure --tool cmake
+        npm run configure -- --tool cmake
         cd build
         cmake
         make
