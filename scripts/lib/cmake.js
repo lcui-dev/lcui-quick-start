@@ -1,6 +1,5 @@
 const { spawnSync } = require('child_process')
 const msbuild = require('./msbuild')
-const logger = require('./logger')
 
 module.exports = {
   name: 'cmake',

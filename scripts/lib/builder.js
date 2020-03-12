@@ -11,13 +11,19 @@ const tools = [
 
 class Builder {
   constructor(options) {
+    const opts = new BuildOptions(options)
+
     this.tool = null
-    this.options = new BuildOptions(options)
+    this.options = opts
 
     for (let tool of tools) {
       try {
         if (execSync(tool.test, { encoding: 'utf-8' })) {
-          this.tool = tool
+          if ((!opts.tool || opts.tool === 'auto')
+            || (opts.tool && tool.name === opts.tool)) {
+            this.tool = tool
+            break
+          }
         }
       } catch (err) {
         continue
