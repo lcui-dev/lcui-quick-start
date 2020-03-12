@@ -12,7 +12,7 @@ before_script:
 
 script:
   - npm run build:css
-  - npm run configure --tool xmake
+  - npm run configure -- --tool xmake
   - xmake
-  - npm run configure --tool cmake
+  - npm run configure -- --tool cmake
   - cd build && make
