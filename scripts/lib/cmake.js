@@ -1,3 +1,4 @@
+const fs = require('fs')
 const { spawnSync } = require('child_process')
 const msbuild = require('./msbuild')
 
@@ -9,6 +10,9 @@ module.exports = {
 
     if (options.platform === 'windows') {
       params.push('-DCMAKE_GENERATOR_PLATFORM=x64', '-T', 'v141_xp')
+    }
+    if (!fs.existsSync(options.buildDir)) {
+      fs.mkdirSync(options.buildDir)
     }
     return spawnSync('cmake', params, { stdio: 'inherit', cwd: options.buildDir })
   },
