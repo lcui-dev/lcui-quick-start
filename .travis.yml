@@ -15,4 +15,4 @@ script:
   - npm run configure --tool xmake
   - xmake
   - npm run configure --tool cmake
-  - cd build && cmake && make && cd ..
+  - cd build && make
