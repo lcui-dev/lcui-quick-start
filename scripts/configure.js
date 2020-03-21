@@ -53,7 +53,6 @@ program
     try {
       configure({ mode: program.mode, arch: program.arch, tool: program.tool })
     } catch (err) {
-      console.log(err)
       logger.error(err.message)
       process.exit(-1)
     }

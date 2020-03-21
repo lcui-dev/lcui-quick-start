@@ -11,6 +11,7 @@ app/lib
 app/store.data
 app/assets/fonts
 app/assets/stylesheets
+scripts/*.json
 Release
 Debug
 CMakeLists.txt

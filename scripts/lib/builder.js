@@ -11,16 +11,21 @@ const tools = [
 
 class Builder {
   constructor(options) {
-    const opts = new BuildOptions(options)
-
     this.tool = null
-    this.options = opts
+    this.rawOptions = options
+    this.configFile = path.join(__dirname, 'builder.json')
+    this.options = fs.existsSync(this.configFile) ? require(this.configFile) : {}
+    this.options = new BuildOptions({ ...this.options, ...this.rawOptions })
+    this.detechTool()
+  }
 
+  detechTool() {
+    this.tool = null
     for (let tool of tools) {
       try {
         if (execSync(tool.test, { encoding: 'utf-8' })) {
-          if ((!opts.tool || opts.tool === 'auto')
-            || (opts.tool && tool.name === opts.tool)) {
+          if ((!this.options.tool || this.options.tool === 'auto')
+            || (this.options.tool && tool.name === this.options.tool)) {
             this.tool = tool
             break
           }
@@ -41,6 +46,13 @@ class Builder {
 
   configure() {
     logger.log('\n[configure]')
+    this.options = new BuildOptions(this.rawOptions)
+    this.detechTool()
+    fs.writeFileSync(this.configFile, JSON.stringify({
+      mode: this.options.mode,
+      arch: this.options.arch,
+      tool: this.tool.name
+    }, null, 2))
     return this.tool.configure(this.options)
   }
 
