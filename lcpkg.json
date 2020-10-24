@@ -29,15 +29,15 @@
   },
   "dependencies": {
     "LCUI": {
-      "version": "v2.0.0",
-      "uri": "github:lc-soft/LCUI",
+      "version": "2.1.0",
       "resolved": {
-        "all": "https://github.com/lc-soft/LCUI/releases/download/v2.0.0/LCUI-2.0.0_x86-windows.lcpkg.zip",
-        "x64-uwp": "https://github.com/lc-soft/LCUI/releases/download/v2.0.0/LCUI-2.0.0_x64-uwp.lcpkg.zip",
-        "x64-windows": "https://github.com/lc-soft/LCUI/releases/download/v2.0.0/LCUI-2.0.0_x64-windows.lcpkg.zip",
-        "x86-uwp": "https://github.com/lc-soft/LCUI/releases/download/v2.0.0/LCUI-2.0.0_x86-uwp.lcpkg.zip",
-        "x86-windows": "https://github.com/lc-soft/LCUI/releases/download/v2.0.0/LCUI-2.0.0_x86-windows.lcpkg.zip"
+        "all": "https://github.com/lc-soft/LCUI/releases/download/v2.1.0/LCUI-2.1.0_x86-windows.lcpkg.zip",
+        "x64-uwp": "https://github.com/lc-soft/LCUI/releases/download/v2.1.0/LCUI-2.1.0_x64-uwp.lcpkg.zip",
+        "x64-windows": "https://github.com/lc-soft/LCUI/releases/download/v2.1.0/LCUI-2.1.0_x64-windows.lcpkg.zip",
+        "x86-uwp": "https://github.com/lc-soft/LCUI/releases/download/v2.1.0/LCUI-2.1.0_x86-uwp.lcpkg.zip",
+        "x86-windows": "https://github.com/lc-soft/LCUI/releases/download/v2.1.0/LCUI-2.1.0_x86-windows.lcpkg.zip"
       },
+      "uri": "github:lc-soft/LCUI",
       "linkage": "auto"
     }
   }
