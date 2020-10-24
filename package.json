@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:bin && npm run build:css",
     "build:bin": "node ./scripts/build-bin.js",
     "build:css": "node ./scripts/build-css.js",
     "configure": "node ./scripts/configure.js",
