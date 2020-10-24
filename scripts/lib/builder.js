@@ -77,13 +77,7 @@ class Builder {
       return
     }
     logger.log('\n[after build]')
-    logger.log(`copy ${opts.binDir} -> ${opts.targetDir}`)
-    fs.copySync(opts.binDir, opts.targetDir)
-    if (this.options.platform == 'windows') {
-      const targetPath = path.join(opts.targetDir, opts.mode, opts.targetFileName)
-      logger.log(`copy ${targetPath} -> ${opts.targetPath}`)
-      fs.copySync(targetPath, opts.targetPath)
-    }
+    execSync('lcpkg export --filter runtime app', { stdio: 'inherit' })
   }
 }
 
