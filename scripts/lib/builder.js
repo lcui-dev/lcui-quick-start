@@ -13,7 +13,7 @@ class Builder {
   constructor(options) {
     this.tool = null
     this.rawOptions = options
-    this.configFile = path.join(__dirname, 'builder.json')
+    this.configFile = path.resolve(__dirname, '..', '..', 'config', 'builder.json')
     this.options = fs.existsSync(this.configFile) ? require(this.configFile) : {}
     this.options = new BuildOptions({ ...this.options, ...this.rawOptions })
     this.detechTool()

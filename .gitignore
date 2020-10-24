@@ -15,6 +15,7 @@ scripts/*.json
 Release
 Debug
 CMakeLists.txt
+config/builder.json
 !src/**/**/CMakeLists.txt
 *.pdb
 *.exe
