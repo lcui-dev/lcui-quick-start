@@ -3,6 +3,7 @@ const fs = require('fs-extra')
 const { execSync } = require('child_process')
 const BuildOptions = require('./options')
 const logger = require('./logger')
+const { config } = require('process')
 
 const tools = [
   require('./xmake'),
@@ -46,8 +47,12 @@ class Builder {
 
   configure() {
     logger.log('\n[configure]')
+    const configDir = path.dirname(this.configFile)
     this.options = new BuildOptions(this.rawOptions)
     this.detechTool()
+    if (!fs.existsSync(configDir)) {
+      fs.mkdirSync(configDir, { recursive: true })
+    }
     fs.writeFileSync(this.configFile, JSON.stringify({
       mode: this.options.mode,
       arch: this.options.arch,
