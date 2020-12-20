@@ -22,19 +22,20 @@ class Builder {
 
   detechTool() {
     this.tool = null
-    for (let tool of tools) {
+    if (this.options.tool && this.options.tool !== 'auto') {
+      this.tool = tools.find((tool) => tool.name === this.options.tool)
+      return
+    }
+    this.tool = tools.find((tool) => {
       try {
         if (execSync(tool.test, { encoding: 'utf-8' })) {
-          if ((!this.options.tool || this.options.tool === 'auto')
-            || (this.options.tool && tool.name === this.options.tool)) {
-            this.tool = tool
-            break
-          }
+          return true
         }
       } catch (err) {
-        continue
+        return false
       }
-    }
+      return false
+    })
     if (!this.tool) {
       throw new Error('the build tool was not found! currently supports cmake and xmake, please install one of them.')
     }
@@ -53,11 +54,17 @@ class Builder {
     if (!fs.existsSync(configDir)) {
       fs.mkdirSync(configDir, { recursive: true })
     }
-    fs.writeFileSync(this.configFile, JSON.stringify({
+    if (!fs.existsSync(this.options.buildDir)) {
+      fs.mkdirSync(this.options.buildDir)
+    }
+    const config = {
       mode: this.options.mode,
       arch: this.options.arch,
       tool: this.tool.name
-    }, null, 2))
+    }
+    fs.writeFileSync(this.configFile, JSON.stringify(config, null, 2))
+    logger.log(`write config to ${this.configFile}:`)
+    logger.log(config)
     return this.tool.configure(this.options)
   }
 
@@ -82,7 +89,7 @@ class Builder {
       return
     }
     logger.log('\n[after build]')
-    execSync('lcpkg export --filter runtime app', { stdio: 'inherit' })
+    execSync(`lcpkg export --filter runtime --arch ${opts.arch} app`, { stdio: 'inherit' })
   }
 }
 

@@ -6,8 +6,9 @@ module.exports = {
   configure(options) {
     const params = ['../']
 
-    if (options.platform === 'windows') {
-      params.push('-DCMAKE_GENERATOR_PLATFORM=x64', '-T', 'v141_xp')
+    if (options.platform === 'windows' && options.arch === 'x64') {
+      console.log(options.arch)
+      params.push(`-DCMAKE_GENERATOR_PLATFORM=${options.arch}`)
     }
     return spawnSync('cmake', params, { stdio: 'inherit', cwd: options.buildDir })
   },
