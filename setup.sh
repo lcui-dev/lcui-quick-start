@@ -22,19 +22,38 @@ echo "repodir: ${repodir}"
 echo "installdir: ${installdir}"
 echo ""
 
+download_github_repo() {
+  local owner="$1"
+  local name="$2"
+  local version="$3"
+  echo "downloading $name ..."
+  wget https://github.com/$owner/$name/archive/$version.zip -O $name-$version.zip
+  echo "extracting $name ..."
+  unzip $name-$version.zip >> $logfile
+  rm $name-$version.zip
+  mv $name-$version $name
+}
+
 install_xmake() {
   if [ ! -x "$(which xmake)" ]; then
-    echo installing xmake ...
-    curl -fsSL https://xmake.io/shget.text > install_xmake.sh
-    bash install_xmake.sh
-    rm install_xmake.sh
+    echo "installing xmake ..."
+    curl -fsSL https://xmake.io/shget.text | bash
     source ~/.xmake/profile
   fi
 }
 
+install_nodejs() {
+  if [ ! -x "$(which node)" ]; then
+    echo "please install node.js"
+  fi
+  if [ ! -x "$(which npm)" ]; then
+    echo "please install npm"
+  fi
+}
+
 install_dependencies() {
-  echo installing dependencies ...
-  sudo apt-get -qq -y install build-essential automake libtool pkg-config libsqlite3-dev libpng-dev libjpeg-dev libxml2-dev libfreetype6-dev libx11-dev
+  echo "installing dependencies ..."
+  sudo apt-get -qq -y install build-essential unzip automake libtool pkg-config libsqlite3-dev libpng-dev libjpeg-dev libxml2-dev libfreetype6-dev libx11-dev
 }
 
 install_lcui() {
@@ -43,12 +62,7 @@ install_lcui() {
   echo "============================================" >> $logfile
   cd $repodir
   if [ ! -d "LCUI" ]; then
-    echo "downloading LCUI ..."
-    wget https://github.com/lc-soft/LCUI/archive/develop.zip -O LCUI-develop.zip
-    echo "extracting LCUI ..."
-    unzip LCUI-develop.zip >> $logfile
-    rm LCUI-develop.zip
-    mv LCUI-develop LCUI
+    download_github_repo "lc-soft" "LCUI" "develop"
     cd LCUI
     ./autogen.sh >> $logfile
     echo "configuring LCUI ..."
@@ -56,7 +70,6 @@ install_lcui() {
   else
     cd LCUI
   fi
-
   echo "building LCUI ..."
   make >> $logfile
   make install >> $logfile
@@ -66,6 +79,7 @@ install_lcui() {
 
 install_dependencies
 install_xmake
+install_nodejs
 install_lcui
 
 cd $rootdir
