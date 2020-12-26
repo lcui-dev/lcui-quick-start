@@ -1,7 +1,6 @@
 # lcui-quick-start
 
-<a href="https://github.com/lc-ui/lcui-quick-start/actions"><img src="https://github.com/lc-ui/lcui-quick-start/workflows/C%2FC%2B%2B%20CI/badge.svg" alt="GitHub Actions"></a>
-<a href="https://travis-ci.org/lc-ui/lcui-quick-start"><img src="https://travis-ci.org/lc-ui/lcui-quick-start.svg?branch=master" alt="Build Status"></a>
+[![GitHub Actions](https://github.com/lc-ui/lcui-quick-start/workflows/C%2FC%2B%2B%20CI/badge.svg)](https://github.com/lc-ui/lcui-quick-start/actions)
 
 (**English**/[中文](README.zh-cn.md))
 
@@ -13,30 +12,61 @@ To clone and run this repository you'll need install the following tools on your
 
 - [Git](https://git-scm.com)
 - [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com))
-- [LCPkg](https://github.com/lc-soft/lcpkg):
+- [LCPkg](https://github.com/lc-soft/lcpkg) (Windows only):
     ```bash
     npm install -g lcpkg
     lcpkg setup
     ```
 - [CMake](https://cmake.org/) or [XMake](https://xmake.io/)
 
-From your command line:
+Open your command line terminal and type the following command to clone this repository:
 
 ```bash
-# Clone this repository
 git clone https://github.com/lc-ui/lcui-quick-start
+```
 
-# Go into the repository
+Go into the repository:
+
+```bash
 cd lcui-quick-start
+```
 
-# Install NodeJS dependencies
+Install Node.js dependencies:
+
+```bash
 npm install
+```
 
-# Install C/C++ dependencies for x64 CPU architecture
+Install C/C++ dependencies:
+
+```bash
+# for Windows
 lcpkg install --arch x64
 
-# Run the app with debug mode
-lcpkg run start --mode debug
+# for Linux
+sh ./setup.sh
+```
+
+Build and run this repository:
+
+```bash
+npm start
+```
+
+Other useful commands:
+
+```bash
+# Configure the compiler to compile in debug mode
+npm run configure -- --mode debug
+
+# Use CMake to build this repository
+npm run configure -- --tool cmake
+
+# Compile css files
+npm run build:css
+
+# Compile binary files
+npm run build:bin
 ```
 
 ## What's included

@@ -1,7 +1,6 @@
 # lcui-quick-start
 
-<a href="https://github.com/lc-ui/lcui-quick-start/actions"><img src="https://github.com/lc-ui/lcui-quick-start/workflows/C%2FC%2B%2B%20CI/badge.svg" alt="GitHub Actions"></a>
-<a href="https://travis-ci.org/lc-ui/lcui-quick-start"><img src="https://travis-ci.org/lc-ui/lcui-quick-start.svg?branch=master" alt="Build Status"></a>
+[![GitHub Actions](https://github.com/lc-ui/lcui-quick-start/workflows/C%2FC%2B%2B%20CI/badge.svg)](https://github.com/lc-ui/lcui-quick-start/actions)
 
 ([English](README.md)/**中文**)
 
@@ -13,30 +12,61 @@
 
 - [Git](https://git-scm.com)
 - [Node.js](https://nodejs.org/en/download/) (自带 [npm](http://npmjs.com))
-- [LCPkg](https://github.com/lc-soft/lcpkg):
+- [LCPkg](https://github.com/lc-soft/lcpkg)（仅 Windows 用户需要安装它）:
     ```bash
     npm install -g lcpkg
     lcpkg setup
     ```
 - [CMake](https://cmake.org/) 或 [XMake](https://xmake.io/)
 
-之后，在你的终端里运行：
+之后，打开命令行窗口并输入以下命令将本项目克隆到本地：
 
 ```bash
-# 克隆这个仓库
 git clone https://github.com/lc-ui/lcui-quick-start
+```
 
-# 进入仓库
+进入项目的源码目录：
+
+```bash
 cd lcui-quick-start
+```
 
-# 安装 NodeJS 依赖包
+安装 Node.js 的依赖包：
+
+```bash
 npm install
+```
 
-# 安装适用于 x64 CPU 架构的 C/C++ 依赖库
+安装 C/C++ 依赖库：
+
+```bash
+# Windows 系统
 lcpkg install --arch x64
 
-# 以调试模式运行应用程序
-lcpkg run start --mode debug
+# Linux 系统
+sh ./setup.sh
+```
+
+编译并运行此项目：
+
+```bash
+npm start
+```
+
+其它有用的命令:
+
+```bash
+# 配置编译器使用 debug 模式编译
+npm run configure -- --mode debug
+
+# 使用 CMake 构建这个项目
+npm run configure -- --tool cmake
+
+# 编译样式文件
+npm run build:css
+
+# 编译可执行文件
+npm run build:bin
 ```
 
 ## 包括什么
