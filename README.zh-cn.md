@@ -57,16 +57,14 @@ npm start
 
 ```bash
 # 配置编译器使用 debug 模式编译
-npm run configure -- --mode debug
+lcui build --mode debug
 
 # 使用 CMake 构建这个项目
-npm run configure -- --tool cmake
+lcui build --tool cmake
 
 # 编译样式文件
 npm run build:css
 
-# 编译可执行文件
-npm run build:bin
 ```
 
 ## 包括什么

@@ -57,16 +57,13 @@ Other useful commands:
 
 ```bash
 # Configure the compiler to compile in debug mode
-npm run configure -- --mode debug
+lcui build --mode debug
 
 # Use CMake to build this repository
-npm run configure -- --tool cmake
+lcui build --tool cmake
 
 # Compile css files
 npm run build:css
-
-# Compile binary files
-npm run build:bin
 ```
 
 ## What's included

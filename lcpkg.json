@@ -1,6 +1,6 @@
 {
   "name": "lcui-quick-start",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A minimal LCUI application",
   "author": "lc-soft",
   "homepage": "https://github.com/lc-ui/lcui-quick-start",
@@ -20,6 +20,20 @@
     "debug",
     "release"
   ],
+  "builder": {
+    "configureFiles": [
+      "include/version.h.in",
+      "CMakeLists.txt.in",
+      "xmake.lua.in"
+    ],
+    "hooks": {
+      "afterBuild": "lcpkg export --filter runtime --arch {{arch}} --mode {{mode}} app",
+      "beforeBuild": "lcpkg export --filter build --arch {{arch}} --mode {{mode}} vendor"
+    },
+    "linkDirs": [
+      "vendor/lib"
+    ]
+  },
   "scripts": {
     "build:bin": "node ./scripts/build-bin.js",
     "build:css": "node ./scripts/build-css.js",
