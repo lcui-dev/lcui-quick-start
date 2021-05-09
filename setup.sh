@@ -34,15 +34,6 @@ download_github_repo() {
   mv $name-$version $name
 }
 
-install_nodejs() {
-  if [ ! -x "$(which node)" ]; then
-    echo "please install node.js"
-  fi
-  if [ ! -x "$(which npm)" ]; then
-    echo "please install npm"
-  fi
-}
-
 install_dependencies() {
   echo "installing dependencies ..."
   sudo apt-get -qq -y install build-essential unzip automake libtool pkg-config libsqlite3-dev libpng-dev libjpeg-dev libxml2-dev libfreetype6-dev libx11-dev
@@ -54,7 +45,7 @@ install_lcui() {
   echo "============================================" >> $logfile
   cd $repodir
   if [ ! -d "LCUI" ]; then
-    download_github_repo "lc-soft" "LCUI" "master"
+    download_github_repo "lc-soft" "LCUI" "develop"
     cd LCUI
     ./autogen.sh >> $logfile
     echo "configuring LCUI ..."
@@ -70,7 +61,6 @@ install_lcui() {
 }
 
 install_dependencies
-install_nodejs
 install_lcui
 
 cd $rootdir
