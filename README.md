@@ -12,11 +12,19 @@ To clone and run this repository you'll need install the following tools on your
 
 - [Git](https://git-scm.com)
 - [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com))
-- [LCPkg](https://github.com/lc-soft/lcpkg) (Windows only):
+- [LCPkg](https://github.com/lc-soft/lcpkg):
+
     ```bash
     npm install -g lcpkg
     lcpkg setup
     ```
+
+- [LCUI CLI](https://github.com/lc-soft/lcpkg):
+
+    ```bash
+    npm install -g lcui
+    ```
+
 - [CMake](https://cmake.org/) or [XMake](https://xmake.io/)
 
 Open your command line terminal and type the following command to clone this repository:
@@ -31,26 +39,17 @@ Go into the repository:
 cd lcui-quick-start
 ```
 
-Install Node.js dependencies:
+Then run the following command:
 
 ```bash
-npm install
-```
+# set up the development environment for project
+lcui setup
 
-Install C/C++ dependencies:
+# build project
+lcui build
 
-```bash
-# for Windows
-lcpkg install --arch x64
-
-# for Linux
-sh ./setup.sh
-```
-
-Build and run this repository:
-
-```bash
-npm start
+# Run project
+lcui run
 ```
 
 Other useful commands:
@@ -62,8 +61,8 @@ lcui build --mode debug
 # Use CMake to build this repository
 lcui build --tool cmake
 
-# Compile css files
-npm run build:css
+# Clean build folder before building
+lcui build --clean
 ```
 
 ## What's included

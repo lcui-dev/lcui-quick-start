@@ -12,11 +12,19 @@
 
 - [Git](https://git-scm.com)
 - [Node.js](https://nodejs.org/en/download/) (自带 [npm](http://npmjs.com))
-- [LCPkg](https://github.com/lc-soft/lcpkg)（仅 Windows 用户需要安装它）:
+- [LCPkg](https://github.com/lc-soft/lcpkg)：
+
     ```bash
     npm install -g lcpkg
     lcpkg setup
     ```
+
+- [LCUI CLI](https://github.com/lc-soft/lcpkg)：
+
+    ```bash
+    npm install -g lcui
+    ```
+
 - [CMake](https://cmake.org/) 或 [XMake](https://xmake.io/)
 
 之后，打开命令行窗口并输入以下命令将本项目克隆到本地：
@@ -31,26 +39,17 @@ git clone https://github.com/lc-ui/lcui-quick-start
 cd lcui-quick-start
 ```
 
-安装 Node.js 的依赖包：
+然后运行以下命令：
 
 ```bash
-npm install
-```
+# 设置项目开发环境
+lcui setup
 
-安装 C/C++ 依赖库：
+# 构建项目
+lcui build
 
-```bash
-# Windows 系统
-lcpkg install --arch x64
-
-# Linux 系统
-sh ./setup.sh
-```
-
-编译并运行此项目：
-
-```bash
-npm start
+# 运行项目
+lcui run
 ```
 
 其它有用的命令:
@@ -62,9 +61,8 @@ lcui build --mode debug
 # 使用 CMake 构建这个项目
 lcui build --tool cmake
 
-# 编译样式文件
-npm run build:css
-
+# 在构建前清除构建目录
+lcui build --clean
 ```
 
 ## 包括什么
