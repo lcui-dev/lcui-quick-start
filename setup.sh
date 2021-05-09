@@ -34,14 +34,6 @@ download_github_repo() {
   mv $name-$version $name
 }
 
-install_xmake() {
-  if [ ! -x "$(which xmake)" ]; then
-    echo "installing xmake ..."
-    curl -fsSL https://xmake.io/shget.text | bash
-    source ~/.xmake/profile
-  fi
-}
-
 install_nodejs() {
   if [ ! -x "$(which node)" ]; then
     echo "please install node.js"
@@ -62,7 +54,7 @@ install_lcui() {
   echo "============================================" >> $logfile
   cd $repodir
   if [ ! -d "LCUI" ]; then
-    download_github_repo "lc-soft" "LCUI" "develop"
+    download_github_repo "lc-soft" "LCUI" "master"
     cd LCUI
     ./autogen.sh >> $logfile
     echo "configuring LCUI ..."
@@ -78,7 +70,6 @@ install_lcui() {
 }
 
 install_dependencies
-install_xmake
 install_nodejs
 install_lcui
 
