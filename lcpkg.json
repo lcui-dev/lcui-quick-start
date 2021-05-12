@@ -34,13 +34,6 @@
       "vendor/lib"
     ]
   },
-  "scripts": {
-    "build:bin": "node ./scripts/build-bin.js",
-    "build:css": "node ./scripts/build-css.js",
-    "configure": "node ./scripts/configure.js",
-    "run": "node ./scripts/run.js",
-    "start": "lcpkg run configure && lcpkg run build:bin && lcpkg run build:css && lcpkg run run"
-  },
   "dependencies": {
     "LCUI": {
       "version": "2.1.0",
