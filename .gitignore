@@ -11,3 +11,6 @@ app/store.data
 *.exe
 *.dll
 *.log
+*.lib
+*.exp
+*.ilk

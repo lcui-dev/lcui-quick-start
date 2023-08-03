@@ -26,7 +26,7 @@ a.c-about__item {
 .c-about__meta {
   margin-top: 10px;
 
-  textview {
+  text {
     color: $secondary-text-color;
     font-size: 12px;
   }
@@ -39,7 +39,7 @@ a.c-about__item {
   display: inline-block;
   background-size: contain;
   background-position: center;
-  background-image: url(../images/logo.png);
+  background-image: url(assets/images/logo.png);
 }
 
 .c-about__name {

@@ -2,7 +2,7 @@
 @import "components";
 @import "views";
 
-textview, a {
+text, a {
   color: $primary-text-color;
 }
 
@@ -10,7 +10,7 @@ textview, a {
   padding: 5px;
   margin: -5px -5px 5px -5px;
 
-  textview {
+  text {
     margin-bottom: 10px;
   }
   .feedback {

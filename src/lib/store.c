@@ -2,7 +2,7 @@
 #include <string.h>
 #include <errno.h>
 #include "store.h"
-#include "version.h"
+#include "config.h"
 
 #define STORE_FILE "store.data"
 #define STORE_HEAD_STR "app store file"

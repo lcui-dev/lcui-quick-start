@@ -28,6 +28,9 @@ cd lcui-quick-start
 git submodule sync --recursive
 git submodule update --init --recursive
 
+# 编译资源文件
+lcui compile ./src
+
 # 构建
 xmake
 

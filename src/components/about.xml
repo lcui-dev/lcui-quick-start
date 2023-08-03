@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<lcui-app>
+  <ui>
+    <w class="c-about__item">
+      <w class="c-about__icon" />
+      <text ref="name" class="c-about__name" />
+    </w>
+    <w class="c-about__item">
+      <w class="c-about__meta">
+        <text ref="version" />
+        <text ref="lcui_version" />
+      </w>
+      <text ref="description" />
+    </w>
+    <a ref="homepage" class="c-about__item">
+      Visit homepage
+    </a>
+    <a ref="bugs_url" class="c-about__item">
+      Report an issue
+    </a>
+  </ui>
+</lcui-app>
