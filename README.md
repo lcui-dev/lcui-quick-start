@@ -42,7 +42,7 @@ xmake run
 
 - Some resource files.
 - Some scripts that make it easy for you to quickly build application.
-- Configuration files for [CMake](https://cmake.org/) and [XMake](https://xmake.io/) build tools, You can choose one of them that you like.
+- Configuration file for [XMake](https://xmake.io/).
 - Simple data storage implementation in `src/lib/store.c`.
 - [.scss](https://sass-lang.com/guide) files for describe the user interface style.
 - `about` component for display app infomation.
@@ -52,12 +52,10 @@ xmake run
 
 - **`app`**: contains the resource files required for the application to run. You can use it as the working directory of the application, and when you publish your application, you only need to package the files in that directory.
 - **`build`**: contains build tool output files.
-- **`scripts`**: contains build-related scripts and configuration files.
 - **`src`**: contains the source code.
-  - **`ui`**: contains source code related to the user interface.
-    - **`stylesheets`**: contains the source code of stylesheets. You can put [.scss](https://sass-lang.com/guide) files here, they will be compiled into css files and outputed to the `app/assets/stylesheets` directory at build time.
-    - **`components`**: contains the source code of the components.
-    - **`views`**: contains the source code of the views.
+  - **`style`**: contains the source code of stylesheets. You can put [.scss](https://sass-lang.com/guide) files here.
+  - **`components`**: contains the source code of the components.
+  - **`views`**: contains the source code of the views.
   - **`lib`**: contains the base library code.
 
 ## License

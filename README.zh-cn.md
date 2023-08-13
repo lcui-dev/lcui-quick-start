@@ -42,7 +42,7 @@ xmake run
 
 - 一些资源文件。
 - 一些能方便你构建应用程序的脚本。
-- [CMake](https://cmake.org/) 和 [XMake](https://xmake.io/) 构建工具的配置文件，你可以选择其中一个你熟悉的来使用。
+-  [XMake](https://xmake.io/) 构建工具的配置文件。
 - 简单的数据存储操作实现，在 `src/lib/store.c` 中可找到。
 - 用于描述用户界面样式的 [.scss](https://sass-lang.com/guide) 文件。
 - 用于显示应用程序信息的 `about` 组件。
@@ -54,10 +54,9 @@ xmake run
 - **`build`**: 包含构建工具输出的文件。
 - **`scripts`**: 包含构建相关的脚本和配置文件。
 - **`src`**: 包含源代码。
-  - **`ui`**: 包含用户界面相关的源代码。
-    - **`stylesheets`**: 包含样式表的源代码。你可以将 [.scss](https://sass-lang.com/guide) 文件放到这里, 它们会在构建时被编译为 css 文件并输出到  `app/assets/stylesheets` 目录。
-    - **`components`**: 包含组件的源代码。
-    - **`views`**: 包含视图的源代码。
+  - **`style`**: 包含样式表的源代码。你可以将 [.scss](https://sass-lang.com/guide) 文件放到这里。
+  - **`components`**: 包含组件的源代码。
+  - **`views`**: 包含视图的源代码。
   - **`lib`**: 包含基础库的源代码。
 
 ## 许可
