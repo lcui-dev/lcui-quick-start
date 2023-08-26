@@ -11,18 +11,11 @@ jobs:
     - uses: actions/checkout@v1
     - name: install xmake
       uses: xmake-io/github-action-setup-xmake@v1.0.1
-    - name: install Node.js packages
-      run: npm install
     - name: setup
-      run: sh ./setup.sh
-    - name: build css
-      run: npm run build:css
+      run: |
+        git submodule sync --recursive
+        git submodule update --init --recursive
+    - name: lcui-cli
+      run: lcui compile ./src
     - name: xmake
-      run: |
-        npm run configure -- --tool xmake
-        xmake
-    - name: cmake
-      run: |
-        npm run configure -- --tool cmake
-        cd build
-        make
+      run: xmake
