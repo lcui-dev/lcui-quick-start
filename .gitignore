@@ -4,9 +4,7 @@ build
 node_modules
 include/config.h
 include/version.h
-app/app
-app/lib
-app/store.data
+app
 *.pdb
 *.exe
 *.dll
@@ -14,3 +12,4 @@ app/store.data
 *.lib
 *.exp
 *.ilk
+compile_commands.json

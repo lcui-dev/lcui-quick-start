@@ -1,11 +1,13 @@
-.c-about {
+@import "../style/variables";
+
+.about {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
 }
 
-.c-about__item {
+.item {
   padding: 10px 20px;
   border-bottom: 1px solid #eee;
 
@@ -14,7 +16,7 @@
   }
 }
 
-a.c-about__item {
+a.item {
   &:hover {
     background-color: #fafafa;
   }
@@ -23,7 +25,7 @@ a.c-about__item {
   }
 }
 
-.c-about__meta {
+.meta {
   margin-top: 10px;
 
   text {
@@ -32,17 +34,17 @@ a.c-about__item {
   }
 }
 
-.c-about__icon {
+.icon {
   width: 32px;
   height: 32px;
   margin-right: 10px;
   display: inline-block;
   background-size: contain;
   background-position: center;
-  background-image: url(assets/images/logo.png);
+  background-image: url(../assets/logo.png);
 }
 
-.c-about__name {
+.name {
   font-size: 20px;
   display: inline-block;
   vertical-align: middle;

@@ -1,13 +1,13 @@
 #include "config.h"
 #include "about.h"
-#include "about.xml.h"
+#include "about.tsx.h"
 #include <LCUI/app.h>
 #include <ui_widgets.h>
 #include <stdio.h>
 
 static ui_widget_prototype_t *about_proto;
 
-void About_OnInit(ui_widget_t *w)
+void ui_about_init(ui_widget_t *w)
 {
         about_refs_t refs;
         char lcui_version_str[32];
@@ -25,8 +25,9 @@ void About_OnInit(ui_widget_t *w)
         ui_widget_add_class(w, "c-about");
 }
 
-void UI_InitAbout(void)
+void ui_register_about(void)
 {
-        about_proto = ui_create_widget_prototype("about", NULL);
-        about_proto->init = About_OnInit;
+        about_init_prototype();
+        about_proto->init = ui_about_init;
+        about_load_resources();
 }

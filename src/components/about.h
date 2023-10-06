@@ -1,1 +1,2 @@
-extern void UI_InitAbout(void);
+
+void ui_register_about(void);

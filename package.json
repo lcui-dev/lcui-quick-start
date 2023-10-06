@@ -1,0 +1,24 @@
+{
+  "name": "lcui-quick-start",
+  "version": "0.2.0",
+  "description": "A minimal LCUI application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/lcui-dev/lcui-quick-start.git"
+  },
+  "keywords": [
+    "lcui"
+  ],
+  "author": "liu <lc-soft@live.cn>",
+  "license": "MIT",
+  "devDependencies": {
+    "@lcui/react": "^0.1.0",
+    "@lcui/react-icons": "^1.0.0",
+    "@types/react": "^18.2.25",
+    "react": "^18.2.0"
+  }
+}

@@ -1,6 +1,4 @@
-@import "variables";
-@import "components";
-@import "views";
+@import "./style/variables";
 
 text, a {
   color: $primary-text-color;
