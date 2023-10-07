@@ -1,24 +1,25 @@
 import { Text, Link } from "@lcui/react";
 import styles from "./about.module.scss";
+import pkg from "../../package.json";
 
 export default function About() {
   return (
     <div className={styles.about}>
       <div className={styles.item}>
         <div className={styles.icon} />
-        <Text $ref="name" className={styles.name} />
+        <Text className={styles.name}>{pkg.name}</Text>
       </div>
       <div className={styles.item}>
         <div className={styles.meta}>
-          <Text $ref="version" />
+          <Text>{pkg.version}</Text>
           <Text $ref="lcui_version" />
         </div>
-        <Text $ref="description" />
+        <Text>{pkg.description}</Text>
       </div>
-      <Link $ref="homepage" className={styles.item}>
+      <Link className={styles.item} href={pkg.homepage}>
         Visit homepage
       </Link>
-      <Link $ref="bugs_url" className={styles.item}>
+      <Link className={styles.item} href={pkg.bugs.url}>
         Report an issue
       </Link>
     </div>

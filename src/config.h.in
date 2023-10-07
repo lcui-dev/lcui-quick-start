@@ -1,5 +1,0 @@
-#define APP_NAME L"lcui-quick-start"
-#define APP_VERSION "${VERSION}"
-#define APP_DESCRIPTION L"A minimal LCUI application"
-#define APP_HOMEPAGE "https://github.com/lcui-dev/lcui-quick-start"
-#define APP_BUGS_URL "https://github.com/lcui-dev/lcui-quick-start/issues"

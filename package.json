@@ -8,7 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/lcui-dev/lcui-quick-start.git"
+    "url": "https://github.com/lcui-dev/lcui-quick-start.git"
+  },
+  "homepage": "https://github.com/lcui-dev/lcui-quick-start",
+  "bugs": {
+    "url": "https://github.com/lcui-dev/lcui-quick-start/issues"
   },
   "keywords": [
     "lcui"
