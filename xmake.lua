@@ -8,6 +8,7 @@ includes("vendor/LCUI/xmake.lua")
 
 target("app")
     set_configdir("include")
+    add_configfiles("src/config.h.in", { prefix = "APP" })
     set_targetdir("app/")
     add_deps("lcui")
     set_kind("binary")

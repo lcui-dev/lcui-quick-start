@@ -1,6 +1,7 @@
 build
 .xmake
 .vscode
+.lcui
 node_modules
 include/config.h
 include/version.h

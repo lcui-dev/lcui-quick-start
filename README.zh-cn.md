@@ -1,4 +1,4 @@
-# lcui-quick-start
+# 快速上手示例
 
 <a href="https://github.com/lc-ui/lcui-quick-start/actions"><img src="https://github.com/lc-ui/lcui-quick-start/workflows/C%2FC%2B%2B%20CI/badge.svg" alt="GitHub Actions"></a>
 <a href="https://travis-ci.org/lc-ui/lcui-quick-start"><img src="https://travis-ci.org/lc-ui/lcui-quick-start.svg?branch=master" alt="Build Status"></a>
@@ -11,52 +11,38 @@
 
 在克隆和运行这个仓库之前，你需要在你的计算机上安装:
 
-- [Git](https://git-scm.com)
-- [Node.js](https://nodejs.org/en/download/) (自带 [npm](http://npmjs.com))
-- [XMake](https://xmake.io/)
+- [Git](https://git-scm.com)：版本管理工具
+- [Node.js](https://nodejs.org/en/download/) (自带 [npm](http://npmjs.com))：JavaScript 运行环境
+- [XMake](https://xmake.io/)：构建工具
 
-之后，在你的终端里运行：
+之后，运行以下命令：
 
 ```bash
-# 克隆这个仓库
-git clone https://github.com/lc-ui/lcui-quick-start
+# 安装命令行工具
+npm install -g @lcui/cli
 
-# 进入仓库
-cd lcui-quick-start
-
-# 初始化 git 子模块
-git submodule sync --recursive
-git submodule update --init --recursive
-
-# 编译资源文件
-lcui compile ./src
-
-# 构建
-xmake
-
-# 运行
-xmake run
+# 创建项目
+lcui create my-lcui-app
 ```
 
-## 包括什么
+## 包含什么
 
 - 一些资源文件。
-- 一些能方便你构建应用程序的脚本。
--  [XMake](https://xmake.io/) 构建工具的配置文件。
+- [XMake](https://xmake.io/) 的配置文件。
 - 简单的数据存储操作实现，在 `src/lib/store.c` 中可找到。
 - 用于描述用户界面样式的 [.scss](https://sass-lang.com/guide) 文件。
+- 用于描述用户界面结构的 tsx 文件。你可以参考它使用 TypeScript 语言和 React 库编写无状态组件。
 - 用于显示应用程序信息的 `about` 组件。
-- 实现了简单布局和交互的 `home` 视图。
+- 实现了简单布局和交互的 `home` 页面。
 
 ## 项目结构
 
 - **`app`**: 包含应用程序运行所需的资源文件。你可以将它当成应用程序的工作目录，在发布应用程序时你只需要打包这个目录内的文件。
 - **`build`**: 包含构建工具输出的文件。
-- **`scripts`**: 包含构建相关的脚本和配置文件。
 - **`src`**: 包含源代码。
   - **`style`**: 包含样式表的源代码。你可以将 [.scss](https://sass-lang.com/guide) 文件放到这里。
   - **`components`**: 包含组件的源代码。
-  - **`views`**: 包含视图的源代码。
+  - **`pages`**: 包含页面的源代码。
   - **`lib`**: 包含基础库的源代码。
 
 ## 许可

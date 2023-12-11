@@ -19,7 +19,7 @@ text, a {\
 \
 .container {\
   max-width: 700px;\
-  padding: 0 10px;\
+  padding: 16px;\
   margin: 0 auto;\
   box-sizing: border-box;\
 }\

@@ -1,4 +1,5 @@
-import { Text, Link } from "@lcui/react";
+import React, { Text, Link } from "@lcui/react";
+import { ArrowRight } from "@lcui/react-icons";
 import styles from "./about.module.scss";
 import pkg from "../../package.json";
 
@@ -17,10 +18,12 @@ export default function About() {
         <Text>{pkg.description}</Text>
       </div>
       <Link className={styles.item} href={pkg.homepage}>
-        Visit homepage
+        <Text>Visit homepage</Text>
+        <ArrowRight />
       </Link>
       <Link className={styles.item} href={pkg.bugs.url}>
-        Report an issue
+        <Text>Report an issue</Text>
+        <ArrowRight />
       </Link>
     </div>
   );

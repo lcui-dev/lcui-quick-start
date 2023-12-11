@@ -1,4 +1,4 @@
-import { Text, TextInput, Button } from "@lcui/react";
+import React, { Text, TextInput, Button } from "@lcui/react";
 import About from "../components/about";
 
 export default function Home() {
