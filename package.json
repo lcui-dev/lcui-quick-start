@@ -20,7 +20,7 @@
   "author": "liu <lc-soft@live.cn>",
   "license": "MIT",
   "devDependencies": {
-    "@lcui/react": "^0.1.0",
+    "@lcui/react": "^0.2.0",
     "@lcui/react-icons": "^1.0.0",
     "@types/react": "^18.2.25",
     "react": "^18.2.0"

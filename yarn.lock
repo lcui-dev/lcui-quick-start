@@ -9,10 +9,10 @@
   dependencies:
     react "^18.2.0"
 
-"@lcui/react@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@lcui/react/-/react-0.1.0.tgz#f323c63ecf1285c31dd9f320c6e22ea43738393c"
-  integrity sha512-qzhwNWGlWKjcnDeA+oSCCx+5Y+Y7dK+pxxJQ6b/oGsFLjH3qxg1HhRAYXn1zgb1ULRdonbmMBvHzDE1oSxring==
+"@lcui/react@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.npmmirror.com/@lcui/react/-/react-0.2.0.tgz#03509ea87203bfaaa01d1b5b5b1269d36bee2da2"
+  integrity sha512-bAuVhJwtvOAJMBhHv+DXB9CA0WVymGVyG4Hm2AjVUrCeysbshTAV/75q3ww84zAzGYmq0kQonbWnifOpU3dbjw==
   dependencies:
     react "^18.2.0"
 
