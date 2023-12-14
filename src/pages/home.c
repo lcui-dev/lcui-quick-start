@@ -11,8 +11,6 @@ typedef struct home_t {
         int feedback_timer;
 } home_t;
 
-ui_widget_prototype_t *home_proto;
-
 static void on_feedback_timeout(void *arg)
 {
         home_t *self;
