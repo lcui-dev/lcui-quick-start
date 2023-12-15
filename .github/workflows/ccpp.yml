@@ -19,7 +19,7 @@ jobs:
     - name: Install packages
       run: |
         npm install
-        npm install -g @lcui/cli
+        npm install -g @lcui/cli@beta
     - name: Restore xmake packages
       uses: actions/cache@v3
       with:
@@ -32,8 +32,8 @@ jobs:
         xmake -v
     - name: Package
       run: |
-        xmake package -v
-        xmake install -o app
+        xmake install -o dist
+        mv dist/bin/* app
     - uses: actions/upload-artifact@master
       with:
         name: package (${{ runner.os }})

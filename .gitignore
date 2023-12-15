@@ -1,3 +1,5 @@
+app
+dist
 build
 .xmake
 .vscode
@@ -5,7 +7,6 @@ build
 node_modules
 include/config.h
 include/version.h
-app
 *.pdb
 *.exe
 *.dll
