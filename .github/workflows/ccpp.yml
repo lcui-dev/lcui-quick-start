@@ -33,11 +33,13 @@ jobs:
     - name: Package
       run: |
         xmake install -o dist
-        mv dist/bin/* app
+        mkdir dist/package
+        cp -r app dist/package/lcui-quick-start
+        mv dist/bin/* dist/package/lcui-quick-start
     - uses: actions/upload-artifact@master
       with:
         name: package (${{ runner.os }})
-        path: app
+        path: dist/package
     - name: Cache xmake packages
       uses: actions/cache@v3
       with:
