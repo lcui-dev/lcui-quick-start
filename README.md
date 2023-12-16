@@ -17,44 +17,32 @@ To clone and run this repository you'll need install the following tools on your
 From your command line:
 
 ```bash
-# Clone this repository
-git clone https://github.com/lc-ui/lcui-quick-start
+# Install command line tool
+npm install -g @lcui/cli
 
-# Go into the repository
-cd lcui-quick-start
-
-# Update git submodule
-git submodule sync --recursive
-git submodule update --init --recursive
-
-# Compile resource files
-lcui compile ./src
-
-# Build
-xmake
-
-# Run
-xmake run
+# Create project
+lcui create my-lcui-app
 ```
 
 ## What's included
 
 - Some resource files.
-- Some scripts that make it easy for you to quickly build application.
 - Configuration file for [XMake](https://xmake.io/).
 - Simple data storage implementation in `src/lib/store.c`.
 - [.scss](https://sass-lang.com/guide) files for describe the user interface style.
-- `about` component for display app infomation.
-- `home` view that implements simple layout and interaction.
+- Some tsx files used to describe the structure of the user interface. You can refer to it to write stateless components using the TypeScript language and React library.
+- `about` component for display app information.
+- `home` page that implements simple layout and interaction.
 
 ## Project Structure
 
 - **`app`**: contains the resource files required for the application to run. You can use it as the working directory of the application, and when you publish your application, you only need to package the files in that directory.
 - **`build`**: contains build tool output files.
 - **`src`**: contains the source code.
+  - **`assets`**: contains resource files.
   - **`style`**: contains the source code of stylesheets. You can put [.scss](https://sass-lang.com/guide) files here.
-  - **`components`**: contains the source code of the components.
-  - **`views`**: contains the source code of the views.
+  - **`components`**: Contains source code for components.
+  - **`pages`**: Contains source code for pages.
   - **`lib`**: contains the base library code.
 
 ## License
