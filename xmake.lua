@@ -7,6 +7,9 @@ add_defines("_CRT_SECURE_NO_WARNINGS")
 includes("vendor/LCUI/xmake.lua")
 
 target("app")
+    if is_plat("windows") then
+        add_rules("win.sdk.application")
+    end
     set_configdir("include")
     add_configfiles("src/config.h.in", { prefix = "APP" })
     set_rundir("app/")
