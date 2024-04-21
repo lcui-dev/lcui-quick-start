@@ -1,2 +1,0 @@
-#define APP_NAME L"lcui-quick-start"
-#define APP_VERSION "${VERSION}"

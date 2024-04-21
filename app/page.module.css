@@ -1,0 +1,10 @@
+root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app {
+    padding: 20px;
+    max-width: 800px;
+}

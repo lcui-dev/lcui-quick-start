@@ -1,4 +1,6 @@
-@import "../style/variables";
+$primary-text-color: #202124;
+$secondary-text-color: #5f6368;
+$green: #28a745;
 
 .about {
   background-color: #fff;
@@ -45,7 +47,7 @@ a.item {
   display: inline-block;
   background-size: contain;
   background-position: center;
-  background-image: url(../assets/logo.png);
+  background-image: url(./logo.png);
 }
 
 .name {

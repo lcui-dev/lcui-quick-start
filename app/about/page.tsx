@@ -1,9 +1,9 @@
-import React, { Text, Link } from "@lcui/react";
+import { Text, Link } from "@lcui/react";
 import { ArrowRight } from "@lcui/react-icons";
-import styles from "./about.module.scss";
+import styles from "./styles.module.scss";
 import pkg from "../../package.json";
 
-export default function About() {
+export default function Page() {
   return (
     <div className={styles.about}>
       <div className={styles.item}>
