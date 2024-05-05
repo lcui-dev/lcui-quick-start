@@ -53,15 +53,15 @@
 
 "@lcui/react-icons@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@lcui/react-icons/-/react-icons-1.0.0.tgz#c0c58e859662529f5d3c84e8885e7f39a99d234d"
+  resolved "https://registry.npmmirror.com/@lcui/react-icons/-/react-icons-1.0.0.tgz#c0c58e859662529f5d3c84e8885e7f39a99d234d"
   integrity sha512-BbRaSZGd63nEkSMf8kfDUpR909QV8P5MvXvZCrxzo/UPMe7NhkNWnUPS7XkGfTHrKWfR33l7Pm+iIV4mACSoNg==
   dependencies:
     react "^18.2.0"
 
 "@lcui/react@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.npmmirror.com/@lcui/react/-/react-0.2.0.tgz#03509ea87203bfaaa01d1b5b5b1269d36bee2da2"
-  integrity sha512-bAuVhJwtvOAJMBhHv+DXB9CA0WVymGVyG4Hm2AjVUrCeysbshTAV/75q3ww84zAzGYmq0kQonbWnifOpU3dbjw==
+  version "0.2.1"
+  resolved "https://registry.npmmirror.com/@lcui/react/-/react-0.2.1.tgz#43e10c89c62fb929ebf6f9f79dc23c34152309bb"
+  integrity sha512-q1fGdi+0adNMs6hkPl0L+pCwiQm6ScF0KZ5IzFZJyLlVUgyjY0dS9id5gmoZvZVurOuyfCWq2WPTMYMAHURndA==
   dependencies:
     react "^18.2.0"
 
@@ -90,6 +90,11 @@
   version "0.11.0"
   resolved "https://registry.npmmirror.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
+
+"@thedutchcoder/postcss-rem-to-px@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.npmmirror.com/@thedutchcoder/postcss-rem-to-px/-/postcss-rem-to-px-0.0.2.tgz#632a3cabae8454d2c50ee61bfb88d77d31213e3c"
+  integrity sha512-M2T3bJSTgLtZF8+KDYDtSDAFGuTlaxYfitpjkmNswnfJ8AjbQ/g7NC+bqgAAViYWFV9I3tdrQuQ3Bu8j7GrjwA==
 
 ansi-regex@^5.0.1:
   version "5.0.1"
@@ -529,7 +534,7 @@ postcss-value-parser@^4.0.0:
   resolved "https://registry.npmmirror.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
-postcss@^8.4.23:
+postcss@^8.4.23, postcss@^8.4.38:
   version "8.4.38"
   resolved "https://registry.npmmirror.com/postcss/-/postcss-8.4.38.tgz#b387d533baf2054288e337066d81c6bee9db9e0e"
   integrity sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==
@@ -545,7 +550,7 @@ queue-microtask@^1.2.2:
 
 react@^18.2.0:
   version "18.2.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
+  resolved "https://registry.npmmirror.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"

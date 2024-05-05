@@ -41,63 +41,65 @@ static void about_page_init_prototype(void)
 
 static void about_page_load_template(ui_widget_t *parent, about_page_refs_t *refs)
 {
-        ui_widget_t *w[11];
+        ui_widget_t *w[12];
 
-        ui_widget_add_class(parent, "_about_1hw5p_1");
+        ui_widget_add_class(parent, "container");
         w[0] = ui_create_widget(NULL);
-        ui_widget_add_class(w[0], "_item_1hw5p_8");
+        ui_widget_add_class(w[0], "_about_1hw5p_1");
         w[1] = ui_create_widget(NULL);
-        ui_widget_add_class(w[1], "_icon_1hw5p_36");
-        w[2] = ui_create_widget("text");
-        ui_widget_add_class(w[2], "_name_1hw5p_46");
-        ui_widget_set_text(w[2], (const char*)widget_text_0);
-        w[3] = ui_create_widget(NULL);
-        ui_widget_add_class(w[3], "_item_1hw5p_8");
+        ui_widget_add_class(w[1], "_item_1hw5p_8");
+        w[2] = ui_create_widget(NULL);
+        ui_widget_add_class(w[2], "_icon_1hw5p_36");
+        w[3] = ui_create_widget("text");
+        ui_widget_add_class(w[3], "_name_1hw5p_46");
+        ui_widget_set_text(w[3], (const char*)widget_text_0);
         w[4] = ui_create_widget(NULL);
-        ui_widget_add_class(w[4], "_meta_1hw5p_28");
-        w[5] = ui_create_widget("text");
-        ui_widget_set_text(w[5], (const char*)widget_text_1);
-        refs->lcui_version = ui_create_widget("text");
+        ui_widget_add_class(w[4], "_item_1hw5p_8");
+        w[5] = ui_create_widget(NULL);
+        ui_widget_add_class(w[5], "_meta_1hw5p_28");
         w[6] = ui_create_widget("text");
-        ui_widget_set_text(w[6], (const char*)widget_text_2);
-        w[7] = ui_create_widget("a");
-        ui_widget_add_class(w[7], "_item_1hw5p_8");
-        ui_widget_set_attr(w[7], "href", "https://github.com/lcui-dev/lcui-quick-start");
-        w[8] = ui_create_widget("text");
-        ui_widget_set_text(w[8], (const char*)widget_text_3);
+        ui_widget_set_text(w[6], (const char*)widget_text_1);
+        refs->lcui_version = ui_create_widget("text");
+        w[7] = ui_create_widget("text");
+        ui_widget_set_text(w[7], (const char*)widget_text_2);
+        w[8] = ui_create_widget("a");
+        ui_widget_add_class(w[8], "_item_1hw5p_8");
+        ui_widget_set_attr(w[8], "href", "https://github.com/lcui-dev/lcui-quick-start");
+        w[9] = ui_create_widget("text");
+        ui_widget_set_text(w[9], (const char*)widget_text_3);
         refs->ref_0 = ui_create_widget("text");
         ui_widget_add_class(refs->ref_0, "fui-icon-regular");
         ui_widget_set_text(refs->ref_0, (const char*)widget_text_4);
-        w[9] = ui_create_widget("a");
-        ui_widget_add_class(w[9], "_item_1hw5p_8");
-        ui_widget_set_attr(w[9], "href", "https://github.com/lcui-dev/lcui-quick-start/issues");
-        w[10] = ui_create_widget("text");
-        ui_widget_set_text(w[10], (const char*)widget_text_5);
+        w[10] = ui_create_widget("a");
+        ui_widget_add_class(w[10], "_item_1hw5p_8");
+        ui_widget_set_attr(w[10], "href", "https://github.com/lcui-dev/lcui-quick-start/issues");
+        w[11] = ui_create_widget("text");
+        ui_widget_set_text(w[11], (const char*)widget_text_5);
         refs->ref_1 = ui_create_widget("text");
         ui_widget_add_class(refs->ref_1, "fui-icon-regular");
         ui_widget_set_text(refs->ref_1, (const char*)widget_text_6);
-        ui_widget_append(w[0], w[1]);
-        ui_widget_append(w[0], w[2]);
+        ui_widget_append(w[1], w[2]);
+        ui_widget_append(w[1], w[3]);
+        ui_widget_append(w[5], w[6]);
+        ui_widget_append(w[5], refs->lcui_version);
         ui_widget_append(w[4], w[5]);
-        ui_widget_append(w[4], refs->lcui_version);
-        ui_widget_append(w[3], w[4]);
-        ui_widget_append(w[3], w[6]);
-        ui_widget_append(w[7], w[8]);
-        ui_widget_append(w[7], refs->ref_0);
-        ui_widget_append(w[9], w[10]);
-        ui_widget_append(w[9], refs->ref_1);
+        ui_widget_append(w[4], w[7]);
+        ui_widget_append(w[8], w[9]);
+        ui_widget_append(w[8], refs->ref_0);
+        ui_widget_append(w[10], w[11]);
+        ui_widget_append(w[10], refs->ref_1);
+        ui_widget_append(w[0], w[1]);
+        ui_widget_append(w[0], w[4]);
+        ui_widget_append(w[0], w[8]);
+        ui_widget_append(w[0], w[10]);
         ui_widget_append(parent, w[0]);
-        ui_widget_append(parent, w[3]);
-        ui_widget_append(parent, w[7]);
-        ui_widget_append(parent, w[9]);
-        ui_widget_append(parent, parent);
 }
 
 static void about_page_react_update(ui_widget_t *w)
 {
         about_page_react_t *_that = ui_widget_get_data(w, about_page_proto);
-        ui_widget_set_style_string(_that->refs.ref_0, "font-size", "12");
-        ui_widget_set_style_string(_that->refs.ref_1, "font-size", "12");
+        ui_widget_set_style_string(_that->refs.ref_0, "font-size", "12px");
+        ui_widget_set_style_string(_that->refs.ref_1, "font-size", "12px");
 }
 
 static void about_page_react_init(ui_widget_t *w)

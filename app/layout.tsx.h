@@ -5,8 +5,8 @@
 
 // UTF-8 encoded string from: Home
 static const unsigned char widget_text_0[] = {0x48, 0x6f, 0x6d, 0x65, 0};
-// UTF-8 encoded string from: about
-static const unsigned char widget_text_1[] = {0x61, 0x62, 0x6f, 0x75, 0x74, 0};
+// UTF-8 encoded string from: About
+static const unsigned char widget_text_1[] = {0x41, 0x62, 0x6f, 0x75, 0x74, 0};
 
 typedef struct root_layout_react_state {
         char empty;
@@ -25,34 +25,30 @@ static void root_layout_init_prototype(void)
 
 static void root_layout_load_template(ui_widget_t *parent)
 {
-        ui_widget_t *w[5];
+        ui_widget_t *w[4];
 
         ui_widget_add_class(parent, "w-full h-full");
         w[0] = ui_create_widget(NULL);
-        ui_widget_add_class(w[0], "bg-slate-200 flex justify-center");
+        ui_widget_add_class(w[0], "bg-slate-200 flex justify-center pt-1");
         w[1] = ui_create_widget("router-link");
         ui_widget_set_attr(w[1], "to", "/");
-        ui_widget_set_attr(w[1], "active-class", "text-blue-500 bg-white");
+        ui_widget_set_attr(w[1], "active-class", "bg-white");
         ui_widget_set_attr(w[1], "exact", "exact");
         ui_widget_set_attr(w[1], "exact-active-class", "");
-        ui_widget_add_class(w[1], "px-6 py-4 text-base rounded-t");
+        ui_widget_add_class(w[1], "px-6 py-2 text-sm rounded-t mx-1");
         ui_widget_set_text(w[1], (const char*)widget_text_0);
         w[2] = ui_create_widget("router-link");
         ui_widget_set_attr(w[2], "to", "/about");
-        ui_widget_set_attr(w[2], "active-class", "text-blue-500 bg-white");
+        ui_widget_set_attr(w[2], "active-class", "bg-white");
         ui_widget_set_attr(w[2], "exact", "exact");
         ui_widget_set_attr(w[2], "exact-active-class", "");
-        ui_widget_add_class(w[2], "px-6 py-4 text-base rounded-t");
+        ui_widget_add_class(w[2], "px-6 py-2 text-sm rounded-t mx-1");
         ui_widget_set_text(w[2], (const char*)widget_text_1);
-        w[3] = ui_create_widget(NULL);
-        ui_widget_add_class(w[3], "px-6 py-4");
-        w[4] = ui_create_widget("router-view");
+        w[3] = ui_create_widget("router-view");
         ui_widget_append(w[0], w[1]);
         ui_widget_append(w[0], w[2]);
-        ui_widget_append(w[3], w[4]);
         ui_widget_append(parent, w[0]);
         ui_widget_append(parent, w[3]);
-        ui_widget_append(parent, parent);
 }
 
 static void root_layout_react_update(ui_widget_t *w)

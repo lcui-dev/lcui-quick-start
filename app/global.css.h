@@ -1,5 +1,16 @@
 /** Generated from: global.css */
 static const char *css_str_global = "\
+.mx-1 {\
+  margin-left: 4px;\
+  margin-right: 4px;\
+}\
+.my-4 {\
+  margin-top: 16px;\
+  margin-bottom: 16px;\
+}\
+.mt-2 {\
+  margin-top: 8px;\
+}\
 .flex {\
   display: flex;\
 }\
@@ -9,12 +20,18 @@ static const char *css_str_global = "\
 .w-full {\
   width: 100%;\
 }\
+.flex-col {\
+  flex-direction: column;\
+}\
+.items-center {\
+  align-items: center;\
+}\
 .justify-center {\
   justify-content: center;\
 }\
 .rounded-t {\
-  border-top-left-radius: 0.25rem;\
-  border-top-right-radius: 0.25rem;\
+  border-top-left-radius: 4px;\
+  border-top-right-radius: 4px;\
 }\
 .bg-slate-200 {\
   background-color: #e2e8f0;\
@@ -23,21 +40,36 @@ static const char *css_str_global = "\
   background-color: #fff;\
 }\
 .px-6 {\
-  padding-left: 1.5rem;\
-  padding-right: 1.5rem;\
+  padding-left: 24px;\
+  padding-right: 24px;\
 }\
-.py-4 {\
-  padding-top: 1rem;\
-  padding-bottom: 1rem;\
+.py-2 {\
+  padding-top: 8px;\
+  padding-bottom: 8px;\
 }\
-.text-base {\
-  font-size: 1rem;\
-  line-height: 1.5rem;\
+.pt-1 {\
+  padding-top: 4px;\
 }\
-.text-blue-500 {\
-  color: #3b82f6;\
+.pt-6 {\
+  padding-top: 24px;\
 }\
-.test {\
-  font-size: 1rem;\
+.text-center {\
+  text-align: center;\
+}\
+.text-2xl {\
+  font-size: 24px;\
+  line-height: 32px;\
+}\
+.text-sm {\
+  font-size: 14px;\
+  line-height: 20px;\
+}\
+.text-yellow-500 {\
+  color: #eab308;\
+}\
+.container {\
+  max-width: 800px;\
+  margin: 0 auto;\
+  padding: 16px 24px;\
 }\
 ";
