@@ -20,30 +20,50 @@ From your command line:
 # Install command line tool
 npm install -g @lcui/cli
 
-# Create project
-lcui create my-lcui-app
+# Clone this repository
+git clone https://github.com/lcui-dev/lcui-quick-start.git
+
+# Go into the repository
+cd lcui-quick-start
+
+# Install dependencies
+npm install
+
+# Build
+lcui build
+
+# Run the app
+xmake run app
 ```
 
 ## What's included
 
-- Some resource files.
-- Configuration file for [XMake](https://xmake.io/).
-- Simple data storage implementation in `src/lib/store.c`.
-- [.scss](https://sass-lang.com/guide) files for describe the user interface style.
-- Some tsx files used to describe the structure of the user interface. You can refer to it to write stateless components using the TypeScript language and React library.
-- `about` component for display app information.
-- `home` page that implements simple layout and interaction.
+- `app/`: Directory for storing source code and resources based on application routers.
+  - `about/`: Directory for the about page.
+    - `logo.png`: Project icon file.
+    - `page.c`: C source file for the about page.
+    - `page.h`: C header file for the about page.
+    - `page.tsx`: TypeScript source file for the about page.
+    - `page.tsx.h`: page.tsx compiled into C source code, included by page.c.
+    - `styles.module.scss`: CSS module.
+    - `styles.module.scss.h`: CSS module compiled into C code, included by page.tsx.h.
+  - `global.css`: Global CSS styles.
+  - `page.c`: C source file for the main page.
+  - `page.h`: C header file for the main page.
+  - `page.tsx`: TypeScript source file for the main page.
+  - `page.tsx.h`: page.tsx compiled into C code, included by page.c.
+  - `layout.tsx`: Layout containing UI shared with subpages.
+  - `main.c`: Main entry source file containing the source code for `main()` function.
+  - `main.h`: Main entry header file containing headers and functions required by `main()` function.
+- `.clang-format`: Code formatting configuration file.
+- `xmake.lua`: Configuration file for [XMake](https://xmake.io/).
+- `package.json`: Description of the basic information and dependencies of the application.
+- `tailwind.config.js`: Configuration file for [Tailwind CSS](https://tailwindcss.com/), enabling only partial plugins for LCUI features.
+- `postcss.config.js`: Configuration file for [PostCSS](https://postcss.org/).
+- `version.rc`: Resource file describing the icon and information of the Windows executable.
+- `logo.ico`: Icon file for the Windows executable.
+- `tsconfig.json`: [TypeScript configuration file](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
 
-## Project Structure
-
-- **`app`**: contains the resource files required for the application to run. You can use it as the working directory of the application, and when you publish your application, you only need to package the files in that directory.
-- **`build`**: contains build tool output files.
-- **`src`**: contains the source code.
-  - **`assets`**: contains resource files.
-  - **`style`**: contains the source code of stylesheets. You can put [.scss](https://sass-lang.com/guide) files here.
-  - **`components`**: Contains source code for components.
-  - **`pages`**: Contains source code for pages.
-  - **`lib`**: contains the base library code.
 
 ## License
 

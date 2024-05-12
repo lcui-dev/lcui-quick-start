@@ -20,30 +20,49 @@
 # 安装命令行工具
 npm install -g @lcui/cli
 
-# 创建项目
-lcui create my-lcui-app
+# 克隆代码库
+git clone https://gitee.com/lcui-dev/lcui-quick-start.git
+
+# 进入代码库目录
+cd lcui-quick-start
+
+# 安装依赖
+npm install
+
+# 构建
+lcui build
+
+# 运行
+xmake run app
 ```
 
 ## 包含什么
 
-- 一些资源文件。
-- [XMake](https://xmake.io/) 的配置文件。
-- 简单的数据存储操作实现，在 `src/lib/store.c` 中可找到。
-- 用于描述用户界面样式的 [.scss](https://sass-lang.com/guide) 文件。
-- 用于描述用户界面结构的 tsx 文件。你可以参考它使用 TypeScript 语言和 React 库编写无状态组件。
-- 用于显示应用程序信息的 `about` 组件。
-- 实现了简单布局和交互的 `home` 页面。
-
-## 项目结构
-
-- **`app`**: 包含应用程序运行所需的资源文件。你可以将它当成应用程序的工作目录，在发布应用程序时你只需要打包这个目录内的文件。
-- **`build`**: 包含构建工具输出的文件。
-- **`src`**: 包含源代码。
-  - **`assets`**: 包含资源文件。
-  - **`style`**: 包含样式表的源代码。你可以将 [.scss](https://sass-lang.com/guide) 文件放到这里。
-  - **`components`**: 包含组件的源代码。
-  - **`pages`**: 包含页面的源代码。
-  - **`lib`**: 包含基础库的源代码。
+- `app/`：用于存放基于应用路由器的源码和资源。
+  - `about/`: 关于页的目录。
+    - `logo.png`：项目图标文件。
+    - `page.c`: 关于页的 C 源文件。
+    - `page.h`: 关于页的 C 头文件。
+    - `page.tsx`: 关于页的 TypeScript 源文件。
+    - `page.tsx.h`: 已编译为 C 源码的 page.tsx，供 page.c 包含。
+    - `styles.module.scss`: CSS 模块。
+    - `styles.module.scss.h`: 已编译为 C 代码的 CSS 模块，供 page.tsx.h 包含。
+  - `global.css`: 全局 CSS 样式。
+  - `page.c`: 主页的 C 源文件。
+  - `page.h`: 主页的 C 头文件。
+  - `page.tsx`: 主页的 TypeScript 源文件。
+  - `page.tsx.h`: 已编译为 C 代码的 page.tsx，供 page.c 包含。
+  - `layout.tsx`: 布局，包含与子页面共享的 UI。
+  - `main.c`: 主入口源文件，包含 `main()` 函数源码。
+  - `main.h`: 主入口头文件，包含 `main()` 函数所依赖的头文件和函数。
+- `.clang-format`: 代码格式化配置文件。
+- `xmake.lua`: [XMake](https://xmake.io/) 的配置文件。
+- `package.json`: 描述应用程序的基本信息和依赖项。
+- `tailwind.config.js`: [Tailwind CSS](https://tailwindcss.com/) 的配置文件，针对 LCUI 的特性仅开启了部分插件。
+- `postcss.config.js`: [PostCSS](https://postcss.org/) 的配置文件。
+- `version.rc`: 资源文件，用于描述 Windows 可执行文件的图标和信息。
+- `logo.ico`: 图标文件，用于 Windows 可执行文件的图标。
+- `tsconfig.json`: [TypeScript 配置文件](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)。
 
 ## 许可
 
