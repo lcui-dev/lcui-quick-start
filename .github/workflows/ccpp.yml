@@ -21,27 +21,26 @@ jobs:
         npm install
         npm install -g @lcui/cli@beta
     - name: Restore xmake packages
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/.xmake/.cache/packages
         key: ${{ runner.os }}-xmake-packages
     - name: Build
       run: |
-        lcui compile ./src
-        xmake config -y -v
-        xmake -v
+        xmake config -y
+        lcui build
     - name: Package
       run: |
-        xmake install -o dist
-        mkdir dist/package
-        cp -r app dist/package/lcui-quick-start
-        mv dist/bin/* dist/package/lcui-quick-start
+        xmake install -o artifact/build
+        mkdir artifact/package
+        cp -r dist artifact/package/lcui-quick-start
+        cp artifact/build/bin/* artifact/package/lcui-quick-start
     - uses: actions/upload-artifact@master
       with:
         name: package (${{ runner.os }})
-        path: dist/package
+        path: artifact/package
     - name: Cache xmake packages
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/.xmake/.cache/packages
         key: ${{ runner.os }}-xmake-packages
