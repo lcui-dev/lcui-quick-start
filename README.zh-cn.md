@@ -4,7 +4,7 @@
 
 ([English](README.md)/**中文**)
 
-**克隆并运行以快速查看LCUI的运行方式。**
+**克隆并运行以快速查看 LCUI 的运行方式。**
 
 ## 使用
 
@@ -25,6 +25,10 @@ git clone https://gitee.com/lcui-dev/lcui-quick-start.git
 
 # 进入代码库目录
 cd lcui-quick-start
+
+# 下载 git 子模块
+git submodule sync --recursive
+git submodule update --init --recursive
 
 # 安装依赖
 npm install

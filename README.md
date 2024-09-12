@@ -26,6 +26,10 @@ git clone https://github.com/lcui-dev/lcui-quick-start.git
 # Go into the repository
 cd lcui-quick-start
 
+# Download submodules
+git submodule sync --recursive
+git submodule update --init --recursive
+
 # Install dependencies
 npm install
 
@@ -63,7 +67,6 @@ xmake run app
 - `version.rc`: Resource file describing the icon and information of the Windows executable.
 - `logo.ico`: Icon file for the Windows executable.
 - `tsconfig.json`: [TypeScript configuration file](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
-
 
 ## License
 
