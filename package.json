@@ -20,7 +20,7 @@
   "author": "liu <lc-soft@live.cn>",
   "license": "MIT",
   "devDependencies": {
-    "@lcui/react": "^0.3.0",
+    "@lcui/react": "^0.5.0",
     "@lcui/react-icons": "^1.0.1",
     "@thedutchcoder/postcss-rem-to-px": "^0.0.2",
     "postcss": "^8.4.38",
