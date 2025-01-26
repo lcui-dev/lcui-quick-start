@@ -1,13 +1,8 @@
 #include "main.h"
 
-void on_timer(void*arg)
-{
-        ui_print_tree(NULL);
-}
-
 int main(int argc, char *argv[])
 {
-        lcui_app_init();
+        app_init();
 
         // Get app router and route to the root path "/", This means that
         // your app will present the user interface in app/page.ts
@@ -20,6 +15,5 @@ int main(int argc, char *argv[])
         // such as loading configuration files, initializing functional modules
         // ...
 
-        // lcui_set_interval(2000, on_timer, NULL);
-        return lcui_app_run();
+        return app_run();
 }

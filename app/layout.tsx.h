@@ -44,9 +44,9 @@ static void root_layout_load_template(ui_widget_t *parent)
         ui_widget_set_attr(w[2], "exact-active-class", "");
         ui_widget_add_class(w[2], "px-6 py-2 text-sm rounded-t mx-1");
         ui_widget_set_text(w[2], (const char*)widget_text_1);
-        w[3] = ui_create_widget("router-view");
         ui_widget_append(w[0], w[1]);
         ui_widget_append(w[0], w[2]);
+        w[3] = ui_create_widget("router-view");
         ui_widget_append(parent, w[0]);
         ui_widget_append(parent, w[3]);
 }

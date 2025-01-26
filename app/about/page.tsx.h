@@ -18,9 +18,9 @@ static const unsigned char widget_text_5[] = {0x52, 0x65, 0x70, 0x6f, 0x72, 0x74
 static const unsigned char widget_text_6[] = {0xee, 0x83, 0xaa, 0};
 
 typedef struct {
-        ui_widget_t *ref_0;
-        ui_widget_t *ref_1;
         ui_widget_t *lcui_version;
+        ui_widget_t *ref_1;
+        ui_widget_t *ref_2;
 } about_page_refs_t;
 
 typedef struct about_page_react_state {
@@ -53,6 +53,8 @@ static void about_page_load_template(ui_widget_t *parent, about_page_refs_t *ref
         w[3] = ui_create_widget("text");
         ui_widget_add_class(w[3], "_name_1hw5p_46");
         ui_widget_set_text(w[3], (const char*)widget_text_0);
+        ui_widget_append(w[1], w[2]);
+        ui_widget_append(w[1], w[3]);
         w[4] = ui_create_widget(NULL);
         ui_widget_add_class(w[4], "_item_1hw5p_8");
         w[5] = ui_create_widget(NULL);
@@ -60,34 +62,32 @@ static void about_page_load_template(ui_widget_t *parent, about_page_refs_t *ref
         w[6] = ui_create_widget("text");
         ui_widget_set_text(w[6], (const char*)widget_text_1);
         refs->lcui_version = ui_create_widget("text");
+        ui_widget_append(w[5], w[6]);
+        ui_widget_append(w[5], refs->lcui_version);
         w[7] = ui_create_widget("text");
         ui_widget_set_text(w[7], (const char*)widget_text_2);
+        ui_widget_append(w[4], w[5]);
+        ui_widget_append(w[4], w[7]);
         w[8] = ui_create_widget("a");
         ui_widget_add_class(w[8], "_item_1hw5p_8");
         ui_widget_set_attr(w[8], "href", "https://github.com/lcui-dev/lcui-quick-start");
         w[9] = ui_create_widget("text");
         ui_widget_set_text(w[9], (const char*)widget_text_3);
-        refs->ref_0 = ui_create_widget("text");
-        ui_widget_add_class(refs->ref_0, "fui-icon-regular");
-        ui_widget_set_text(refs->ref_0, (const char*)widget_text_4);
+        refs->ref_1 = ui_create_widget("text");
+        ui_widget_add_class(refs->ref_1, "fui-icon-regular");
+        ui_widget_set_text(refs->ref_1, (const char*)widget_text_4);
+        ui_widget_append(w[8], w[9]);
+        ui_widget_append(w[8], refs->ref_1);
         w[10] = ui_create_widget("a");
         ui_widget_add_class(w[10], "_item_1hw5p_8");
         ui_widget_set_attr(w[10], "href", "https://github.com/lcui-dev/lcui-quick-start/issues");
         w[11] = ui_create_widget("text");
         ui_widget_set_text(w[11], (const char*)widget_text_5);
-        refs->ref_1 = ui_create_widget("text");
-        ui_widget_add_class(refs->ref_1, "fui-icon-regular");
-        ui_widget_set_text(refs->ref_1, (const char*)widget_text_6);
-        ui_widget_append(w[1], w[2]);
-        ui_widget_append(w[1], w[3]);
-        ui_widget_append(w[5], w[6]);
-        ui_widget_append(w[5], refs->lcui_version);
-        ui_widget_append(w[4], w[5]);
-        ui_widget_append(w[4], w[7]);
-        ui_widget_append(w[8], w[9]);
-        ui_widget_append(w[8], refs->ref_0);
+        refs->ref_2 = ui_create_widget("text");
+        ui_widget_add_class(refs->ref_2, "fui-icon-regular");
+        ui_widget_set_text(refs->ref_2, (const char*)widget_text_6);
         ui_widget_append(w[10], w[11]);
-        ui_widget_append(w[10], refs->ref_1);
+        ui_widget_append(w[10], refs->ref_2);
         ui_widget_append(w[0], w[1]);
         ui_widget_append(w[0], w[4]);
         ui_widget_append(w[0], w[8]);
@@ -98,8 +98,8 @@ static void about_page_load_template(ui_widget_t *parent, about_page_refs_t *ref
 static void about_page_react_update(ui_widget_t *w)
 {
         about_page_react_t *_that = ui_widget_get_data(w, about_page_proto);
-        ui_widget_set_style_string(_that->refs.ref_0, "font-size", "12px");
         ui_widget_set_style_string(_that->refs.ref_1, "font-size", "12px");
+        ui_widget_set_style_string(_that->refs.ref_2, "font-size", "12px");
 }
 
 static void about_page_react_init(ui_widget_t *w)

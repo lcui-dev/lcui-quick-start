@@ -1,12 +1,12 @@
 #include <locale.h>
 #include <LCUI.h>
 #include <LCUI/main.h>
-#include <ui_router.h>
+#include <router.h>
 #include "about\page.h"
 #include "layout.h"
 #include "page.h"
 
-static void lcui_app_router_init(void)
+static void app_router_init(void)
 {
         router_config_t *config;
         router_t *router = router_create("AppRouter");
@@ -24,14 +24,10 @@ static void lcui_app_router_init(void)
         router_config_destroy(config);
 }
 
-
-static void lcui_app_init(void)
+static void app_init(void)
 {
-        setlocale(LC_CTYPE, "");
         lcui_init();
-        lcui_app_router_init();
-        ui_register_router_link();
-        ui_register_router_view();
+        app_router_init();
         ui_load_about_page_resources();
         ui_load_root_layout_resources();
         ui_load_root_page_resources();
@@ -42,8 +38,7 @@ static void lcui_app_init(void)
         ui_widget_append(ui_root(), ui_create_root_layout());
 }
 
-static int lcui_app_run(void)
+static int app_run(void)
 {
         return lcui_run();
 }
-

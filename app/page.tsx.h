@@ -1,7 +1,9 @@
 /** This file is generated from page.tsx */
 #include <ui.h>
 #include <stdlib.h>
-#include <ui_widgets.h>
+#include <LCUI/widgets.h>
+#include <stdio.h>
+#include <string.h>
 
 // UTF-8 encoded string from: %EE%97%9E
 static const unsigned char widget_text_0[] = {0xee, 0x97, 0x9e, 0};

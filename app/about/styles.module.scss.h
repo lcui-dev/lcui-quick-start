@@ -42,7 +42,7 @@ a._item_1hw5p_8:active {\
   display: inline-block;\
   background-size: contain;\
   background-position: center;\
-  background-image: url(assets\\logo.8da28495.png);\
+  background-image: url(assets\\logo.ab331672.png);\
 }\
 \
 ._name_1hw5p_46 {\
