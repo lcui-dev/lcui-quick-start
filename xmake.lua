@@ -16,28 +16,6 @@ target("app")
     add_deps("lcui")
     set_kind("binary")
     add_files("app/**.c")
-    on_run(function (target)
-        import("core.base.option")
-        local argv = {}
-        local options = {{nil, "memcheck",  "k",  nil, "enable memory check."}}
-        local args = option.raw_parse(option.get("arguments") or {}, options)
-        os.cd("$(scriptdir)/dist")
-        if args.memcheck then
-            if is_plat("windows") then
-                table.insert(argv, target:targetfile())
-                os.execv("drmemory", argv)
-            else
-                table.insert(argv, "valgrind")
-                table.insert(argv, "--leak-check=full")
-                table.insert(argv, "--error-exitcode=42")
-                table.insert(argv, target:targetfile())
-                os.execv("sudo", argv)
-            end
-        else
-            os.execv(target:targetfile())
-        end
-    end)
-
 
 xpack("app")
     set_title("LCUI Quick Start ($(arch))")
