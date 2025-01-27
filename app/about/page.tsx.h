@@ -98,8 +98,6 @@ static void about_page_load_template(ui_widget_t *parent, about_page_refs_t *ref
 static void about_page_react_update(ui_widget_t *w)
 {
         about_page_react_t *_that = ui_widget_get_data(w, about_page_proto);
-        ui_widget_set_style_string(_that->refs.ref_1, "font-size", "12px");
-        ui_widget_set_style_string(_that->refs.ref_2, "font-size", "12px");
 }
 
 static void about_page_react_init(ui_widget_t *w)
