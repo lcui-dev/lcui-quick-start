@@ -31,6 +31,7 @@ module.exports = {
     'margin',
     'padding',
     'position',
+    'opacity',
     'justifyContent',
     'justifyItems',
     'alignContent',
