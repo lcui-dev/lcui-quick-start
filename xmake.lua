@@ -1,5 +1,5 @@
 set_project("app")
-set_version("1.0.0")
+set_version("0.2.0")
 set_warnings("all")
 add_rules("mode.debug", "mode.release")
 add_defines("_CRT_SECURE_NO_WARNINGS")
