@@ -1,6 +1,6 @@
 /** This file is generated from layout.tsx */
 #include <ui.h>
-#include "../vendor.node_modules/@lcui/react-icons/dist/style.css.h"
+#include "../.lcui/build/[modules]/@lcui/fluent-icons/dist/icons.css.h"
 #include "global.css.h"
 
 // UTF-8 encoded string from: Home
@@ -68,6 +68,6 @@ static void root_layout_react_destroy(ui_widget_t *w)
 
 void ui_load_root_layout_resources(void)
 {
-        ui_load_css_string(css_str_style, "style.css");
-        ui_load_css_string(css_str_global, "global.css");
+        ui_load_css_string_icons_chunks();
+        ui_load_css_string_global_chunks();
 }

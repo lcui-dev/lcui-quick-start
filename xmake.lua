@@ -3,8 +3,9 @@ set_version("0.2.0")
 set_warnings("all")
 add_rules("mode.debug", "mode.release")
 add_defines("_CRT_SECURE_NO_WARNINGS")
+add_repositories("lcui-repo https://github.com/lcui-dev/xmake-repo.git")
+add_requires("lcui", {system = false})
 includes("@builtin/xpack")
-includes("vendor/LCUI/xmake.lua")
 
 target("app")
     if is_plat("windows") then
@@ -13,7 +14,7 @@ target("app")
     end
     set_configdir("include")
     set_rundir("dist")
-    add_deps("lcui")
+    add_packages("lcui")
     set_kind("binary")
     add_files("app/**.c")
 

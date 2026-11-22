@@ -11,30 +11,23 @@
 在克隆和运行这个仓库之前，你需要在你的计算机上安装:
 
 - [Git](https://git-scm.com)：版本管理工具
-- [Node.js](https://nodejs.org/en/download/) (自带 [npm](http://npmjs.com))：JavaScript 运行环境
+- [Node.js](https://nodejs.org/en/download/) 22 或更高版本 (自带 [npm](http://npmjs.com))：JavaScript 运行环境
 - [XMake](https://xmake.io/)：构建工具
 
 之后，运行以下命令：
 
 ```bash
-# 安装命令行工具
-npm install -g @lcui/cli
-
 # 克隆代码库
 git clone https://gitee.com/lcui-dev/lcui-quick-start.git
 
 # 进入代码库目录
 cd lcui-quick-start
 
-# 下载 git 子模块
-git submodule sync --recursive
-git submodule update --init --recursive
-
 # 安装依赖
 npm install
 
 # 构建
-lcui build
+npm run build
 
 # 运行
 xmake run app
@@ -62,7 +55,7 @@ xmake run app
 - `.clang-format`: 代码格式化配置文件。
 - `xmake.lua`: [XMake](https://xmake.io/) 的配置文件。
 - `package.json`: 描述应用程序的基本信息和依赖项。
-- `tailwind.config.js`: [Tailwind CSS](https://tailwindcss.com/) 的配置文件，针对 LCUI 的特性仅开启了部分插件。
+- `tailwind.config.js`: [Tailwind CSS](https://tailwindcss.com/) 的配置文件，通过 [`@lcui/tailwind-config`](https://www.npmjs.com/package/@lcui/tailwind-config) 仅保留 LCUI 的 CSS 引擎支持的样式。
 - `postcss.config.js`: [PostCSS](https://postcss.org/) 的配置文件。
 - `version.rc`: 资源文件，用于描述 Windows 可执行文件的图标和信息。
 - `logo.ico`: 图标文件，用于 Windows 可执行文件的图标。

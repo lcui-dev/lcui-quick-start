@@ -2,7 +2,7 @@ name: C/C++ CI
 on: [push, pull_request]
 jobs:
   build:
-    timeout-minutes: 10
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
@@ -11,19 +11,17 @@ jobs:
     name: "Builds binaries on ${{ matrix.os }}"
     steps:
     - uses: actions/checkout@v1
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: npm
     - uses: xmake-io/github-action-setup-xmake@v1
-    - name: Update submodules
-      run: |
-        git submodule sync --recursive
-        git submodule update --init --recursive
     - name: Install packages
-      run: |
-        npm install
-        npm install -g @lcui/cli
+      run: npm ci
     - name: Build
       run: |
         xmake config -y
-        lcui build
+        npm run build
     - name: Package
       run: xmake pack -y
     - uses: actions/upload-artifact@master

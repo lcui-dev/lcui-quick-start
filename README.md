@@ -11,30 +11,23 @@
 To clone and run this repository you'll need install the following tools on your computer:
 
 - [Git](https://git-scm.com)
-- [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com))
+- [Node.js](https://nodejs.org/en/download/) 22 or later (which comes with [npm](http://npmjs.com))
 - [XMake](https://xmake.io/)
 
 From your command line:
 
 ```bash
-# Install command line tool
-npm install -g @lcui/cli
-
 # Clone this repository
 git clone https://github.com/lcui-dev/lcui-quick-start.git
 
 # Go into the repository
 cd lcui-quick-start
 
-# Download submodules
-git submodule sync --recursive
-git submodule update --init --recursive
-
 # Install dependencies
 npm install
 
 # Build
-lcui build
+npm run build
 
 # Run the app
 xmake run app
@@ -62,7 +55,7 @@ xmake run app
 - `.clang-format`: Code formatting configuration file.
 - `xmake.lua`: Configuration file for [XMake](https://xmake.io/).
 - `package.json`: Description of the basic information and dependencies of the application.
-- `tailwind.config.js`: Configuration file for [Tailwind CSS](https://tailwindcss.com/), enabling only partial plugins for LCUI features.
+- `tailwind.config.js`: Configuration file for [Tailwind CSS](https://tailwindcss.com/). It uses [`@lcui/tailwind-config`](https://www.npmjs.com/package/@lcui/tailwind-config) to keep only the utilities that LCUI's CSS engine supports.
 - `postcss.config.js`: Configuration file for [PostCSS](https://postcss.org/).
 - `version.rc`: Resource file describing the icon and information of the Windows executable.
 - `logo.ico`: Icon file for the Windows executable.

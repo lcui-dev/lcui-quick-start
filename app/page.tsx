@@ -1,5 +1,5 @@
 import { useState, TextInput, Button, useRef, Text } from "@lcui/react";
-import { EmojiSparkle } from "@lcui/react-icons";
+import { EmojiSparkle } from "@lcui/fluent-icons";
 
 export default function App() {
   const inputRef = useRef();

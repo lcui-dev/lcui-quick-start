@@ -2,7 +2,7 @@
 #include <LCUI.h>
 #include <LCUI/main.h>
 #include <router.h>
-#include "about\page.h"
+#include "about/page.h"
 #include "layout.h"
 #include "page.h"
 

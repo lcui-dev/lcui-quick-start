@@ -1,5 +1,5 @@
 import { Text, Link } from "@lcui/react";
-import { ArrowRight } from "@lcui/react-icons";
+import { ArrowRight } from "@lcui/fluent-icons";
 import styles from "./styles.module.scss";
 import pkg from "../../package.json";
 
